@@ -28,6 +28,10 @@ bluetooth.profile.sap.server.enabled?=true
 ro.chipname=exynos7420
 ro.arch=exynos7420
 
+# Fingerprint HAL
+ro.vendor.fingerprint.type=home
+ro.vendor.fingerprint.uses_percentage_samples=true
+
 # Graphics
 ro.hardware.egl=mesa
 ro.hardware.gralloc=minigbm
