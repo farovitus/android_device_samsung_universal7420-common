@@ -332,7 +332,6 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-	init.battery.rc \
 	init.power.rc \
 	init.samsung.rc \
 	init.recovery.samsungexynos7420.rc \
