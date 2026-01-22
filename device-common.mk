@@ -328,6 +328,7 @@ PRODUCT_PACKAGES += \
 	init.power.rc \
 	init.samsung.rc \
 	init.recovery.samsungexynos7420.rc \
+	mobicore.rc \
 	init.samsungexynos7420.rc \
 	init.samsungexynos7420.usb.rc \
 	fstab.samsungexynos7420 \
