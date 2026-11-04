@@ -71,6 +71,9 @@ TARGET_BOOTANIMATION_HALF_RES := true
 TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1440
 
+# Mesa panfrost, minigbm and the KMS HWC for the 6.6 kernel
+$(call inherit-product, vendor/nk/gfx/nk_gfx.mk)
+
 # BSP
 PRODUCT_PACKAGES += \
 	memtrack.universal7420 \
