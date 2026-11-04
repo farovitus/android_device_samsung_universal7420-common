@@ -1,0 +1,26 @@
+# No modem driver in the NK 6.6 kernel yet. Replace the modem services
+# from init.baseband.rc and the vendor init.vendor.rilchip.rc with disabled
+# definitions, so init never starts them: cbd fails to boot the CP, and
+# the RIL daemons' onrestart chains restart it every few seconds, which
+# keeps the NETLINK wakeup source active and blocks system suspend.
+# "override" wins whichever file init parses first.
+service cpboot-daemon /vendor/bin/cbd
+    override
+    class nk_nomodem
+    user root
+    disabled
+    oneshot
+
+service ril-daemon /vendor/bin/hw/rild
+    override
+    class nk_nomodem
+    user radio
+    disabled
+    oneshot
+
+service ril-daemon1 /vendor/bin/hw/rild
+    override
+    class nk_nomodem
+    user radio
+    disabled
+    oneshot
