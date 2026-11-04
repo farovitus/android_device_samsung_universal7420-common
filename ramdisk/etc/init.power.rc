@@ -14,6 +14,10 @@ on boot
     chown system system /dev/cpuctl/top-app/cpu.uclamp.min
     chmod 0664 /dev/cpuctl/top-app/cpu.uclamp.min
 
+    # GPU devfreq floor for the power HAL's launch and rendering boosts.
+    chown system system /sys/class/devfreq/14ac0000.gpu/min_freq
+    chmod 0664 /sys/class/devfreq/14ac0000.gpu/min_freq
+
     # cpusets. The A53 cores are cpu0,5-7 and the A57 cores cpu1-4.
     chown system system /dev/cpuset/top-app/cpus
     chown system system /dev/cpuset/foreground/cpus
