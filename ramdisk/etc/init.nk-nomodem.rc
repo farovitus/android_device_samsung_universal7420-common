@@ -1,10 +1,26 @@
-# No modem driver in the NK 6.6 kernel yet. The vendor RIL daemons come
-# from the blob init scripts and would restart forever; keep them stopped.
-on property:init.svc.ril-daemon=running
-    stop ril-daemon
+# No modem driver in the NK 6.6 kernel yet. Replace the modem services
+# from init.baseband.rc and the vendor init.vendor.rilchip.rc with disabled
+# definitions, so init never starts them: cbd fails to boot the CP, and
+# the RIL daemons' onrestart chains restart it every few seconds, which
+# keeps the NETLINK wakeup source active and blocks system suspend.
+# "override" wins whichever file init parses first.
+service cpboot-daemon /vendor/bin/cbd
+    override
+    class nk_nomodem
+    user root
+    disabled
+    oneshot
 
-on property:init.svc.ril-daemon1=running
-    stop ril-daemon1
+service ril-daemon /vendor/bin/hw/rild
+    override
+    class nk_nomodem
+    user radio
+    disabled
+    oneshot
 
-on property:init.svc.cpboot-daemon=running
-    stop cpboot-daemon
+service ril-daemon1 /vendor/bin/hw/rild
+    override
+    class nk_nomodem
+    user radio
+    disabled
+    oneshot
