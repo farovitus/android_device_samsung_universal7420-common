@@ -49,3 +49,12 @@ allow kernel self:capability { chown mknod sys_module};
 allow kernel self:capability { dac_override dac_read_search };
 allow kernel self:system module_request;
 
+
+# The direct firmware loader reads brcmfmac firmware, its NVRAM and the
+# regulatory database from /vendor/firmware, whose brcm/ entries link
+# to the blobs in /vendor/etc/wifi.
+allow kernel vendor_file:dir r_dir_perms;
+allow kernel vendor_file:lnk_file read;
+allow kernel vendor_file:file r_file_perms;
+allow kernel vendor_configs_file:dir search;
+allow kernel vendor_configs_file:file r_file_perms;

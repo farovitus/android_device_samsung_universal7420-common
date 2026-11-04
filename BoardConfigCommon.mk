@@ -198,19 +198,13 @@ TARGET_COPY_OUT_VENDOR := system/vendor
 # WFD
 BOARD_USES_WFD := true
 
-# Wifi
-TARGET_USES_64_BIT_BCMDHD        := true
-BOARD_HAVE_SAMSUNG_WIFI          := true
+# Wifi: mainline brcmfmac over plain nl80211. The Broadcom vendor HAL
+# stays; supplicant and hostapd use the stub driver-command library.
 BOARD_WLAN_DEVICE                := bcmdhd
 WPA_SUPPLICANT_USE_HIDL          := true
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
-WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/dhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_STA          := "/system/vendor/etc/wifi/bcmdhd_sta.bin"
-WIFI_DRIVER_FW_PATH_AP           := "/system/vendor/etc/wifi/bcmdhd_apsta.bin"
 WIFI_BAND                        := 802_11_ABG
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
