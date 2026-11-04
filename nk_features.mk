@@ -5,3 +5,6 @@
 NK_HAS_MODEM ?= false
 NK_HAS_CAMERA ?= false
 NK_HAS_NFC ?= false
+# GPS (lhd, gpsd and the GNSS HAL) sits behind the BCM4773 sensor hub on
+# SPI1, which needs Samsung's BBD driver stack.
+NK_HAS_GPS ?= false

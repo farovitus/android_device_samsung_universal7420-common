@@ -132,6 +132,9 @@ endif
 ifeq ($(NK_HAS_MODEM),true)
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest_radio.xml
 endif
+ifeq ($(NK_HAS_GPS),true)
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest_gnss.xml
+endif
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
