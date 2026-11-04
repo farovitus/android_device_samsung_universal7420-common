@@ -16,6 +16,8 @@
 
 COMMON_PATH := device/samsung/universal7420-common
 
+include $(COMMON_PATH)/nk_features.mk
+
 BUILD_BROKEN_DUP_RULES := true
 
 # Include path
@@ -124,6 +126,12 @@ TARGET_LMKD_STATS_LOG := true
 
 # Manifest
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest.xml
+ifeq ($(NK_HAS_CAMERA),true)
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest_camera.xml
+endif
+ifeq ($(NK_HAS_MODEM),true)
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest_radio.xml
+endif
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072

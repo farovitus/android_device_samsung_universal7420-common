@@ -1,0 +1,10 @@
+# No modem driver in the NK 6.6 kernel yet. The vendor RIL daemons come
+# from the blob init scripts and would restart forever; keep them stopped.
+on property:init.svc.ril-daemon=running
+    stop ril-daemon
+
+on property:init.svc.ril-daemon1=running
+    stop ril-daemon1
+
+on property:init.svc.cpboot-daemon=running
+    stop cpboot-daemon
