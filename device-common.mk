@@ -166,12 +166,16 @@ PRODUCT_PACKAGES += \
 	android.hardware.gatekeeper@1.0-impl
 
 # GNSS
+ifeq ($(NK_HAS_GPS),true)
 PRODUCT_PACKAGES += \
 	android.hardware.gnss@1.0-impl.universal7420 \
-	android.hardware.gnss@1.0-service.universal7420
+	android.hardware.gnss@1.0-service.universal7420 \
+	init.gps.rc
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps.conf
+    $(COMMON_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps.conf \
+	frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml
+endif
 
 # Graphics
 PRODUCT_PACKAGES += \
@@ -278,7 +282,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
 	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
 	frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
-	frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
 	frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
 	frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
 	frameworks/native/data/etc/android.hardware.sensor.barometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.barometer.xml \
@@ -350,7 +353,6 @@ PRODUCT_PACKAGES += \
 	init.samsungexynos7420.usb.rc \
 	fstab.samsungexynos7420 \
 	init.baseband.rc \
-	init.gps.rc \
 	ueventd.samsungexynos7420.rc
 
 # RCS
