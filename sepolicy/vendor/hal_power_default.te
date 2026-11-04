@@ -24,3 +24,7 @@ allow hal_power_default{
 }:file rw_file_perms;
 
 allow hal_power_default sysfs_sec_tsp:lnk_file read;
+
+# Top-app utilisation clamp (/dev/cpuctl/top-app/cpu.uclamp.min).
+allow hal_power_default cgroup:dir search;
+allow hal_power_default cgroup:file rw_file_perms;
