@@ -24,3 +24,10 @@ allow hal_power_default{
 }:file rw_file_perms;
 
 allow hal_power_default sysfs_sec_tsp:lnk_file read;
+
+# Top-app utilisation clamp (/dev/cpuctl/top-app/cpu.uclamp.min).
+# Android 13 does not enable the cgroup_seclabel policy capability, so
+# cgroup v1 files cannot get their own genfscon type and the rule stays
+# on cgroup. libperfmgr only opens, writes and (for dumpsys) reads it.
+allow hal_power_default cgroup:dir search;
+allow hal_power_default cgroup:file { getattr open read write };

@@ -233,14 +233,6 @@ on boot
     # Allow to access debugfs
     chmod 755 /sys/kernel/debug
 
-    # Allow to access HMP-settings
-    chown system system /sys/kernel/hmp/boost
-    chown system system /sys/kernel/hmp/semiboost
-    chown system system /sys/kernel/hmp/active_down_migration
-    chown system system /sys/kernel/hmp/aggressive_up_migration
-    chown system system /sys/kernel/hmp/sb_down_threshold
-    chown system system /sys/kernel/hmp/sb_up_threshold
-
     # Set up kernel tracing, but disable it by default
     chmod 0222 /sys/kernel/debug/tracing/trace_marker
     write /sys/kernel/debug/tracing/tracing_on 0
@@ -521,26 +513,6 @@ on fs
     chown system radio /sys/class/sensors/irled_remote/irled_send
     chown system radio /sys/class/sensors/irled_remote/irled_send_result
     
-    # LITTLE cluster tuning
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 800000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay "19000 1296000:39000"
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 40000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 85
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "75 1104000:85"
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 40000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 20000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack 20000
-
-    # BIG cluster tuning
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq 1200000
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay "59000 1200000:79000 1600000:19000"
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/boostpulse_duration 40000
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load 89
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads "80 1000000:81 1400000:87 1600000:90"
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time 40000
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate 20000
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack 20000
-
 # Copy DRM Key
     copy /efs/wv.keys /factory/wv.keys
 
