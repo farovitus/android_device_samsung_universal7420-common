@@ -54,6 +54,16 @@
             "ResetOnInit": true
         },
         {
+            "Name": "GPUMinFreq",
+            "Path": "/sys/class/devfreq/14ac0000.gpu/min_freq",
+            "Values": [
+                "544000000",
+                "420000000",
+                "0"
+            ],
+            "ResetOnInit": true
+        },
+        {
             "Name": "PMQoSCpuDmaLatency",
             "Path": "/dev/cpu_dma_latency",
             "Values": [
@@ -120,6 +130,12 @@
             "Value": "30"
         },
         {
+            "PowerHint": "INTERACTION",
+            "Node": "GPUMinFreq",
+            "Duration": 100,
+            "Value": "420000000"
+        },
+        {
             "PowerHint": "LAUNCH",
             "Node": "CPUBigClusterMinFreq",
             "Duration": 5000,
@@ -142,6 +158,12 @@
             "Node": "PMQoSCpuDmaLatency",
             "Duration": 5000,
             "Value": "44"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "GPUMinFreq",
+            "Duration": 5000,
+            "Value": "544000000"
         },
         {
             "PowerHint": "CAMERA_LAUNCH",
@@ -244,6 +266,12 @@
             "Node": "TAUClampBoost",
             "Duration": 0,
             "Value": "30"
+        },
+        {
+            "PowerHint": "EXPENSIVE_RENDERING",
+            "Node": "GPUMinFreq",
+            "Duration": 0,
+            "Value": "420000000"
         },
         {
             "PowerHint": "LOW_POWER",

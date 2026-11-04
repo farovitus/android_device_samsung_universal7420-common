@@ -25,6 +25,10 @@ allow hal_power_default{
 
 allow hal_power_default sysfs_sec_tsp:lnk_file read;
 
+# GPU devfreq floor (/sys/class/devfreq/14ac0000.gpu/min_freq).
+allow hal_power_default sysfs_devfreq:dir r_dir_perms;
+allow hal_power_default sysfs_devfreq:file rw_file_perms;
+
 # Top-app utilisation clamp (/dev/cpuctl/top-app/cpu.uclamp.min).
 allow hal_power_default cgroup:dir search;
 allow hal_power_default cgroup:file rw_file_perms;

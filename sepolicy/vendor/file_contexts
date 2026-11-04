@@ -145,6 +145,7 @@
 /sys/devices/platform/exynos7-devfreq-disp/devfreq/exynos7-devfreq-disp(/.*)?   u:object_r:sysfs_devfreq:s0
 /sys/devices/platform/exynos7-devfreq-mif/devfreq/exynos7-devfreq-mif(/.*)?     u:object_r:sysfs_devfreq:s0
 /sys/devices/platform/exynos7-devfreq-isp/devfreq/exynos7-devfreq-isp(/.*)?     u:object_r:sysfs_devfreq:s0
+/sys/devices/platform/soc@0/14ac0000\.gpu/devfreq/14ac0000\.gpu(/.*)?          u:object_r:sysfs_devfreq:s0
 
 # Fingerprint
 /sys/devices/virtual/fingerprint/fingerprint(/.*)?  u:object_r:sysfs_fingerprint:s0

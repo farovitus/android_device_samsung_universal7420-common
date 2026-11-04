@@ -14,6 +14,10 @@ on boot
     chown system system /dev/cpuctl/top-app/cpu.uclamp.min
     chmod 0664 /dev/cpuctl/top-app/cpu.uclamp.min
 
+    # GPU devfreq floor for the power HAL's launch and rendering boosts.
+    chown system system /sys/class/devfreq/14ac0000.gpu/min_freq
+    chmod 0664 /sys/class/devfreq/14ac0000.gpu/min_freq
+
     # BarTender
     mkdir /dev/cpuctl/bg_cached
     chown system system /dev/cpuctl/bg_cached/tasks
