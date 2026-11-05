@@ -1,0 +1,22 @@
+//
+// Copyright (C) 2026 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_binary {
+    name: "android.hardware.vibrator-service.universal7420",
+    relative_install_path: "hw",
+    vendor: true,
+    init_rc: ["android.hardware.vibrator-service.universal7420.rc"],
+    vintf_fragments: ["android.hardware.vibrator-service.universal7420.xml"],
+    srcs: [
+        "Vibrator.cpp",
+        "service.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "android.hardware.vibrator-V2-ndk",
+    ],
+}

@@ -402,8 +402,10 @@ PRODUCT_COPY_FILES += \
 	prebuilts/vndk/v29/arm64/arch-arm-armv8-a/shared/vndk-core/libprotobuf-cpp-full.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-full-v29.so
 
 # Vibrator
+ifeq ($(NK_HAS_VIBRATOR),true)
 PRODUCT_PACKAGES += \
-	android.hardware.vibrator-service.samsung
+	android.hardware.vibrator-service.universal7420
+endif
 
 # Wifi
 PRODUCT_PACKAGES += \

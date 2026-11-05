@@ -14,3 +14,7 @@ NK_HAS_GPS ?= false
 # system_server blocks in getService() on a declared IStylusMode that never
 # registers.
 NK_HAS_SEC_TOUCH ?= false
+# Vibrator: the 6.6 kernel drives the motor as a force-feedback input
+# device (max77693-haptic), so it uses the input-FF HAL in
+# hardware/vibrator, not Samsung's timed_output one.
+NK_HAS_VIBRATOR ?= true
