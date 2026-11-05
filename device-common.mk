@@ -340,6 +340,7 @@ PRODUCT_PACKAGES += \
 	init.samsungexynos7420.usb.rc \
 	fstab.samsungexynos7420 \
 	init.baseband.rc \
+	init.touch.sh \
 	ueventd.samsungexynos7420.rc
 
 # RCS

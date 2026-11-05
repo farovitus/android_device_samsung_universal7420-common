@@ -1,0 +1,15 @@
+# init.touch.sh: finds the stmfts and touchkey input devices and publishes
+# their inputN.
+type init_touch_sh, domain;
+type init_touch_sh_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(init_touch_sh)
+
+allow init_touch_sh vendor_shell_exec:file rx_file_perms;
+allow init_touch_sh vendor_toolbox_exec:file rx_file_perms;
+
+allow init_touch_sh sysfs:dir search;
+r_dir_file(init_touch_sh, sysfs_stmfts)
+r_dir_file(init_touch_sh, sysfs_sec_touchkey)
+
+set_prop(init_touch_sh, vendor_touch_prop)

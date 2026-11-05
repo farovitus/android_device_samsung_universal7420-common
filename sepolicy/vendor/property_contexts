@@ -20,6 +20,9 @@ vendor.ddk.                      u:object_r:vendor_hwc_prop:s0
 debug.hwc.                       u:object_r:vendor_hwc_prop:s0
 vendor.hwc.                      u:object_r:vendor_hwc_prop:s0
 
+# Touchscreen
+vendor.touch.                    u:object_r:vendor_touch_prop:s0
+
 # modemloader
 hw.revision                      u:object_r:modemloader_prop:s0
 ro.cbd.dt_revision               u:object_r:modemloader_prop:s0

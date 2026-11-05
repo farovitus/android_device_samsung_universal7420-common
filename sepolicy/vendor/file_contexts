@@ -228,3 +228,6 @@
 # USB 
 /sys/devices/virtual/host_notify/usb_otg(/.*)?    u:object_r:sysfs_usb_otg:s0
 /sys/devices/virtual/usb_notify/usb_control(/.*)? u:object_r:sysfs_usb_otg:s0
+
+# Touchscreen
+/(vendor|system/vendor)/bin/init\.touch\.sh     u:object_r:init_touch_sh_exec:s0

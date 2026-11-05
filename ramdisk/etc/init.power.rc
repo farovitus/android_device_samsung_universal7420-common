@@ -38,3 +38,32 @@ on boot
     write /dev/cpuset/system-background/cpus 0,5-6
     write /dev/cpuset/system-background/mems 0
     write /dev/cpuset/restricted/cpus 0,5-7
+
+    start vendor.touch-find
+
+# Touch input off while the display is not interactive. The power HAL sets
+# vendor.touch.inhibit to 0 while the display is interactive and to 1 when
+# it is not (powerhint.json TouchInhibit). Inhibiting an input device
+# drops its events and closes it: stmfts's runtime suspend sends the
+# touchscreen controller to sleep, and the touchkey driver stops its IRQ
+# and switches the controller's supply off. Without this the capacitive
+# Recents and Back keys keep reporting with the screen off, and their
+# VIRTUAL keylayout flag makes PhoneWindowManager vibrate on every press.
+# init.touch.sh finds both devices' inputN.
+service vendor.touch-find /vendor/bin/init.touch.sh
+    user system
+    group system
+    oneshot
+    disabled
+
+on property:vendor.touch.inhibit=1 && property:vendor.touch.stmfts.input=*
+    write /sys/class/input/${vendor.touch.stmfts.input}/inhibited 1
+
+on property:vendor.touch.inhibit=0 && property:vendor.touch.stmfts.input=*
+    write /sys/class/input/${vendor.touch.stmfts.input}/inhibited 0
+
+on property:vendor.touch.inhibit=1 && property:vendor.touch.touchkey.input=*
+    write /sys/class/input/${vendor.touch.touchkey.input}/inhibited 1
+
+on property:vendor.touch.inhibit=0 && property:vendor.touch.touchkey.input=*
+    write /sys/class/input/${vendor.touch.touchkey.input}/inhibited 0
