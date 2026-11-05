@@ -73,6 +73,15 @@
             "HoldFd": true
         },
         {
+            "Name": "StmftsInhibit",
+            "Path": "vendor.touch.stmfts.inhibit",
+            "Values": [
+                "0",
+                "1"
+            ],
+            "Type": "Property"
+        },
+        {
             "Name": "PowerHALMainState",
             "Path": "vendor.powerhal.state",
             "Values": [
@@ -229,6 +238,12 @@
             "Node": "PowerHALMainState",
             "Duration": 0,
             "Value": "VR_SUSTAINED_PERFORMANCE"
+        },
+        {
+            "PowerHint": "INTERACTIVE",
+            "Node": "StmftsInhibit",
+            "Duration": 0,
+            "Value": "0"
         },
         {
             "PowerHint": "EXPENSIVE_RENDERING",

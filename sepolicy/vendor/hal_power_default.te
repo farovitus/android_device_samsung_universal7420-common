@@ -29,3 +29,6 @@ allow hal_power_default sysfs_devfreq:file rw_file_perms;
 # on cgroup. libperfmgr only opens, writes and (for dumpsys) reads it.
 allow hal_power_default cgroup:dir search;
 allow hal_power_default cgroup:file { getattr open read write };
+
+# Touchscreen power-down (vendor.touch.stmfts.inhibit).
+set_prop(hal_power_default, vendor_stmfts_prop)

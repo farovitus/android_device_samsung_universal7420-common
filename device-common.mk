@@ -328,6 +328,7 @@ PRODUCT_PACKAGES += \
 	init.samsung.rc \
 	init.samsungexynos7420.rc \
 	init.samsungexynos7420.usb.rc \
+	init.stmfts.sh \
 	ueventd.samsungexynos7420.rc
 
 # RCS

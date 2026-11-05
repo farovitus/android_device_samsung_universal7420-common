@@ -38,3 +38,22 @@ on boot
     write /dev/cpuset/system-background/cpus 0,5-6
     write /dev/cpuset/system-background/mems 0
     write /dev/cpuset/restricted/cpus 0,5-7
+
+    start vendor.stmfts-find
+
+# Touchscreen power-down. The power HAL sets vendor.touch.stmfts.inhibit
+# to 0 while the display is interactive and to 1 when it is not
+# (powerhint.json StmftsInhibit). Inhibiting the stmfts input device
+# closes it, and the driver's runtime suspend sends the controller to
+# sleep. init.stmfts.sh finds the device's inputN.
+service vendor.stmfts-find /vendor/bin/init.stmfts.sh
+    user system
+    group system
+    oneshot
+    disabled
+
+on property:vendor.touch.stmfts.inhibit=1 && property:vendor.touch.stmfts.input=*
+    write /sys/class/input/${vendor.touch.stmfts.input}/inhibited 1
+
+on property:vendor.touch.stmfts.inhibit=0 && property:vendor.touch.stmfts.input=*
+    write /sys/class/input/${vendor.touch.stmfts.input}/inhibited 0

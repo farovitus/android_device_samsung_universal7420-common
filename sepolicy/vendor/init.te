@@ -58,3 +58,6 @@ allow init vndbinder_device:chr_file { ioctl open read write };
 
 # gatekeeper
 allow init hal_gatekeeper_hwservice:hwservice_manager { add find };
+
+# Touchscreen power-down: init.power.rc writes stmfts's inhibited.
+allow init sysfs_stmfts:file w_file_perms;

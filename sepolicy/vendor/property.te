@@ -15,3 +15,6 @@ vendor_internal_prop(clatd_radio_prop)
 
 # Macloader
 vendor_internal_prop(modemloader_prop);
+
+# Touchscreen
+vendor_internal_prop(vendor_stmfts_prop)

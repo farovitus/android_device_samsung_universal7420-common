@@ -1,0 +1,13 @@
+# init.stmfts.sh: finds the stmfts input device and publishes its inputN.
+type init_stmfts_sh, domain;
+type init_stmfts_sh_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(init_stmfts_sh)
+
+allow init_stmfts_sh vendor_shell_exec:file rx_file_perms;
+allow init_stmfts_sh vendor_toolbox_exec:file rx_file_perms;
+
+allow init_stmfts_sh sysfs:dir search;
+r_dir_file(init_stmfts_sh, sysfs_stmfts)
+
+set_prop(init_stmfts_sh, vendor_stmfts_prop)

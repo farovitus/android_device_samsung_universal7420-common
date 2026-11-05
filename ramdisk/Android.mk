@@ -82,3 +82,10 @@ LOCAL_MODULE_CLASS      := ETC
 LOCAL_SRC_FILES         := etc/init.nk-nomodem.rc
 LOCAL_MODULE_PATH       := $(TARGET_OUT_VENDOR_ETC)/init
 include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE            := init.stmfts.sh
+LOCAL_MODULE_CLASS      := EXECUTABLES
+LOCAL_SRC_FILES         := bin/init.stmfts.sh
+LOCAL_VENDOR_MODULE     := true
+include $(BUILD_PREBUILT)
