@@ -165,3 +165,7 @@ genfscon sysfs /devices/fimc_is_companion.38/video4linux            u:object_r:s
 genfscon sysfs /devices/fimc_is_companion.37/video4linux            u:object_r:sysfs_v4l:s0
 
 genfscon sysfs /kernel/mm/vmscan/mem_boost_mode                     u:object_r:sysfs_vmscan:s0
+
+# 6.6: the sec-battery-compat "battery" and "ac" power supplies, including
+# battery/charging_enabled, which Lineage's health HAL writes.
+genfscon sysfs /devices/platform/sec-battery-compat/power_supply    u:object_r:sysfs_batteryinfo:s0
