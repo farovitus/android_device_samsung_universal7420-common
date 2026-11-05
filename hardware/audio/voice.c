@@ -255,8 +255,8 @@ int start_voice_session(struct voice_session *session)
               __func__,
               pcm_get_error(session->pcm_voice_rx));
 
-        pcm_close(session->pcm_voice_tx);
-        session->pcm_voice_tx = NULL;
+        pcm_close(session->pcm_voice_rx);
+        session->pcm_voice_rx = NULL;
 
         return -ENOMEM;
     }
@@ -270,6 +270,8 @@ int start_voice_session(struct voice_session *session)
               __func__,
               pcm_get_error(session->pcm_voice_tx));
 
+        pcm_close(session->pcm_voice_tx);
+        session->pcm_voice_tx = NULL;
         pcm_close(session->pcm_voice_rx);
         session->pcm_voice_rx = NULL;
 
