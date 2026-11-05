@@ -15,7 +15,6 @@ persist.vendor.camera.           u:object_r:vendor_camera_prop:s0
 vendor.hal.camera.               u:object_r:vendor_camera_prop:s0
 
 # HWC
-ro.vendor.winupdate              u:object_r:vendor_hwc_prop:s0
 vendor.ddk.                      u:object_r:vendor_hwc_prop:s0
 debug.hwc.                       u:object_r:vendor_hwc_prop:s0
 vendor.hwc.                      u:object_r:vendor_hwc_prop:s0
