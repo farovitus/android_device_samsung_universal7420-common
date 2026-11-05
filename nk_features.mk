@@ -8,3 +8,9 @@ NK_HAS_NFC ?= false
 # GPS (lhd, gpsd and the GNSS HAL) sits behind the BCM4773 sensor hub on
 # SPI1, which needs Samsung's BBD driver stack.
 NK_HAS_GPS ?= false
+# The Lineage touch HAL (glove, stylus, key disabler) drives Samsung's
+# sec/tsp and sec/sec_touchkey sysfs nodes, which the mainline stmfts and
+# touchkey drivers do not provide. Its VINTF entry must go with it:
+# system_server blocks in getService() on a declared IStylusMode that never
+# registers.
+NK_HAS_SEC_TOUCH ?= false
