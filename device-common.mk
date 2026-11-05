@@ -82,15 +82,15 @@ $(call inherit-product, vendor/nk/gfx/nk_gfx.mk)
 
 # BSP
 PRODUCT_PACKAGES += \
-	libhwc2on1adapter \
-	libion
+	libhwc2on1adapter
 
 # Camera
 ifeq ($(NK_HAS_CAMERA),true)
 PRODUCT_PACKAGES += \
 	camera.exynos5 \
 	android.hardware.camera.provider@2.5-service \
-	libexynoscamera_shim
+	libexynoscamera_shim \
+	libion
 
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.xml \
