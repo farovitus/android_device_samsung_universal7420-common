@@ -120,6 +120,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     disable_configstore
 
+# Kernel DT image. build/make passes $(PRODUCT_OUT)/dt.img to mkbootimg
+# as --dt when BOARD_KERNEL_SEPARATED_DT is true; with
+# BOARD_KERNEL_PREBUILT_DT hardware/samsung/mkbootimg.mk does not build
+# it, so it is copied from prebuilt/.
+PRODUCT_COPY_FILES += \
+	$(COMMON_PATH)/prebuilt/dt.img:dt.img
+
 # Task profiles. The system cgroups.json covers every controller the
 # 6.6 kernel has, so no vendor cgroups.json is shipped.
 PRODUCT_COPY_FILES += \

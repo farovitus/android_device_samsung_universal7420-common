@@ -1,0 +1,13 @@
+Kernel 6.6.144-4k-g57e825e78fed, SM_G920F lineage-20-android15-6.6 commit 57e825e78fed, built with ./build.sh --zip (NDK clang 21).
+
+Image   S-Boot variant of arch/arm64/boot/Image: arm64 header text_offset
+        (offset 8) set to 0x205000. S-Boot does not boot the unpatched Image.
+        Wi-Fi (cfg80211, brcmfmac, rfkill) is built in; its firmware
+        requests at probe wait for ueventd, which serves /vendor/firmware.
+        sha256 35707d583e18ba592110f8e36f71049a115e3103f48e32b81ee7005e70ee3864
+dt.img  dtbTool DT image, zeroflte EUR revisions 00-07, for the boot
+        image's --dt slot.
+        sha256 7d5c7235fb8918746c2d76684d47d9f931eb3a6759e10203847dcc8f842bcb36
+
+Replace Image, dt.img and modules/ together, from one build, and update
+this file.
