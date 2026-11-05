@@ -28,11 +28,7 @@ chown gps system /sys/devices/platform/bbd.0/ssi_count
 chown gps system /sys/devices/platform/bbd.0/ssi_trace
 chown gps system /sys/devices/platform/bbd.0/shmd
 
-# SensorHub (Location Hub)
-service lhd /vendor/bin/hw/lhd /vendor/etc/sensor/lhd.conf
-    class main
-    user gps
-    group system inet net_raw
+# lhd is defined in init.sensorhub.rc.
 
 # GPS
 service gpsd /vendor/bin/hw/gpsd -c /vendor/etc/gnss/gps.xml

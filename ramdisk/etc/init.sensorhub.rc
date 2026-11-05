@@ -1,0 +1,17 @@
+# BCM4773 sensor hub on the NK 6.6 kernel.
+#
+# bcm4773 is the SPI bridge that provides the BBD devices, sensorhub the
+# SSP driver, and the ssp_* modules the IIO sensors. The kernel ZIP
+# installs them, with modules.dep, in /vendor/lib/modules.
+on early-init
+    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules bcm4773 sensorhub ssp_accel_sensor ssp_gyro_sensor ssp_hub_sensors
+
+on post-fs-data
+    mkdir /data/vendor/gps 0770 gps system
+
+# Location hub: loads the hub's RAM patch and runs its firmware. No
+# sensor and no GNSS works without it.
+service lhd /vendor/bin/hw/lhd /vendor/etc/sensor/lhd-nk.conf
+    class main
+    user gps
+    group system inet net_raw
