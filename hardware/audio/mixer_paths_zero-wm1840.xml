@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    Mixer paths for the NK 6.6 kernel's zero-wm1840 card (card 0).
+
+    The WM1840 (Madera, CS47L85) AIF1 carries playback and capture on
+    PCM 0. Outputs:
+      earpiece     HPOUT3, pin RCV
+      headphones   HPOUT1, pin HP
+      speaker      AIF4 to the MAX98505 amp, pin SPK
+    Inputs (each DMIC line has one mic, in the left slot):
+      main mic     IN1L, digital, pin "Main Mic"
+      sub mic      IN3L, digital, pin "Sub Mic"
+      headset mic  IN2L, analogue on IN2B, pin "Headset Mic"
+
+    The pin switches are DAPM pins of the card. The jack driver also
+    turns HP and "Headset Mic" on and off on insert and removal; the
+    paths below set them again when they route there.
+
+    Voice and SCO paths are placeholders: the card has no modem or BT
+    link yet, so the HAL cannot open those PCMs.
+-->
+<mixer>
+    <!-- ########## Initial mixer settings ########## -->
+
+    <!-- Card pins -->
+    <ctl name="HP Switch" value="0" />
+    <ctl name="RCV Switch" value="0" />
+    <ctl name="SPK Switch" value="0" />
+    <ctl name="Main Mic Switch" value="0" />
+    <ctl name="Sub Mic Switch" value="0" />
+    <ctl name="Third Mic Switch" value="0" />
+    <ctl name="Headset Mic Switch" value="0" />
+
+    <!-- Output sources -->
+    <ctl name="HPOUT1L Input 1" value="None" />
+    <ctl name="HPOUT1R Input 1" value="None" />
+    <ctl name="HPOUT3L Input 1" value="None" />
+    <ctl name="HPOUT3R Input 1" value="None" />
+    <ctl name="AIF4TX1 Input 1" value="None" />
+    <ctl name="AIF4TX2 Input 1" value="None" />
+
+    <!-- Capture sources -->
+    <ctl name="AIF1TX1 Input 1" value="None" />
+    <ctl name="AIF1TX2 Input 1" value="None" />
+
+    <!-- Input modes: IN1 and IN3 are DMICs, IN2B the headset mic -->
+    <ctl name="IN1 Mode" value="Digital" />
+    <ctl name="IN3 Mode" value="Digital" />
+    <ctl name="IN2 Mode" value="Analog" />
+    <ctl name="IN2L Mux" value="B" />
+
+    <!-- Output levels. 128 is 0 dB, in 0.5 dB steps. -->
+    <ctl name="HPOUT1 Digital Switch" value="1" />
+    <ctl name="HPOUT3 Digital Switch" value="1" />
+    <ctl name="HPOUT1 Digital Volume" value="116" />
+    <ctl name="HPOUT3 Digital Volume" value="128" />
+
+    <!-- Amp: (L+R)/2, 14 is +8 dB (stock used 20 with its DSM) -->
+    <ctl name="DAI IN MUX" value="LeftRightDiv2" />
+    <ctl name="Speaker Volume" value="14" />
+
+    <!-- Input high-pass filters on the DMICs, as stock -->
+    <ctl name="IN1L HPF Switch" value="1" />
+    <ctl name="IN3L HPF Switch" value="1" />
+
+    <!-- Input levels. 128 is 0 dB, in 0.5 dB steps. -->
+    <ctl name="IN1L Digital Volume" value="128" />
+    <ctl name="IN3L Digital Volume" value="128" />
+    <ctl name="IN2L Digital Volume" value="128" />
+    <ctl name="IN2L Volume" value="0" />
+
+    <!--
+    #######################################################
+    ### AUDIO ROUTING
+    #######################################################
+    -->
+
+    <path name="none">
+        <!-- Empty path -->
+    </path>
+
+    <!-- ########## Playback ########## -->
+
+    <path name="earpiece">
+        <ctl name="HPOUT3L Input 1" value="AIF1RX1" />
+        <ctl name="HPOUT3R Input 1" value="AIF1RX2" />
+        <ctl name="RCV Switch" value="1" />
+    </path>
+
+    <path name="speaker">
+        <ctl name="AIF4TX1 Input 1" value="AIF1RX1" />
+        <ctl name="AIF4TX2 Input 1" value="AIF1RX2" />
+        <ctl name="SPK Switch" value="1" />
+    </path>
+
+    <path name="headphones">
+        <ctl name="HPOUT1L Input 1" value="AIF1RX1" />
+        <ctl name="HPOUT1R Input 1" value="AIF1RX2" />
+        <ctl name="HP Switch" value="1" />
+    </path>
+
+    <path name="speaker-and-headphones">
+        <path name="speaker" />
+        <path name="headphones" />
+    </path>
+
+    <!-- Voice calls: placeholders until the card has a modem link -->
+
+    <path name="voice-earpiece">
+        <path name="earpiece" />
+    </path>
+
+    <path name="voice-earpiece-wb">
+        <path name="earpiece" />
+    </path>
+
+    <path name="voice-speaker">
+        <path name="speaker" />
+    </path>
+
+    <path name="voice-speaker-wb">
+        <path name="speaker" />
+    </path>
+
+    <path name="voice-headphones">
+        <path name="headphones" />
+    </path>
+
+    <path name="voice-headphones-wb">
+        <path name="headphones" />
+    </path>
+
+    <!-- No BT or HDMI link on the card -->
+
+    <path name="voice-bt-sco-headset">
+    </path>
+
+    <path name="voice-bt-sco-headset-wb">
+    </path>
+
+    <path name="hdmi">
+    </path>
+
+    <path name="speaker-and-hdmi">
+        <path name="speaker" />
+    </path>
+
+    <path name="bt-sco-headset">
+    </path>
+
+    <!-- ########## Capture ########## -->
+
+    <!-- Main (bottom) mic in both capture channels, +6 dB as stock -->
+    <path name="earpiece-mic">
+        <ctl name="AIF1TX1 Input 1" value="IN1L" />
+        <ctl name="AIF1TX2 Input 1" value="IN1L" />
+        <ctl name="IN1L Digital Volume" value="140" />
+        <ctl name="Main Mic Switch" value="1" />
+    </path>
+
+    <!-- Sub (top) mic, used with the loudspeaker -->
+    <path name="speaker-mic">
+        <ctl name="AIF1TX1 Input 1" value="IN3L" />
+        <ctl name="AIF1TX2 Input 1" value="IN3L" />
+        <ctl name="Sub Mic Switch" value="1" />
+    </path>
+
+    <!--
+        Headset mic: IN2L PGA gain 0..31 dB. 20 dB is a starting value;
+        stock's 38 was on the 3.10 driver's own scale.
+    -->
+    <path name="headset-mic">
+        <ctl name="AIF1TX1 Input 1" value="IN2L" />
+        <ctl name="AIF1TX2 Input 1" value="IN2L" />
+        <ctl name="IN2L Volume" value="20" />
+        <ctl name="IN2L Digital Volume" value="140" />
+        <ctl name="Headset Mic Switch" value="1" />
+    </path>
+
+    <path name="voice-mic">
+        <path name="earpiece-mic" />
+    </path>
+
+    <path name="voice-earpiece-mic">
+        <path name="earpiece-mic" />
+    </path>
+
+    <path name="voice-earpiece-mic-wb">
+        <path name="earpiece-mic" />
+    </path>
+
+    <path name="voice-speaker-mic">
+        <path name="earpiece-mic" />
+    </path>
+
+    <path name="voice-speaker-mic-wb">
+        <path name="earpiece-mic" />
+    </path>
+
+    <path name="voice-headset-mic">
+        <path name="headset-mic" />
+    </path>
+
+    <path name="voice-headset-mic-wb">
+        <path name="headset-mic" />
+    </path>
+
+    <path name="voice-bt-sco-mic">
+    </path>
+
+    <path name="voice-bt-sco-mic-wb">
+    </path>
+
+    <path name="hdmi-mic">
+    </path>
+
+    <path name="bt-sco-mic">
+    </path>
+
+    <path name="voice-rec-headset-mic">
+        <path name="headset-mic" />
+    </path>
+
+    <path name="voice-rec-mic">
+        <path name="earpiece-mic" />
+    </path>
+
+    <!-- Main mic left, sub mic right, +10 dB as stock; not tested -->
+    <path name="camcorder-mic">
+        <ctl name="AIF1TX1 Input 1" value="IN1L" />
+        <ctl name="AIF1TX2 Input 1" value="IN3L" />
+        <ctl name="IN1L Digital Volume" value="148" />
+        <ctl name="IN3L Digital Volume" value="148" />
+        <ctl name="Main Mic Switch" value="1" />
+        <ctl name="Sub Mic Switch" value="1" />
+    </path>
+
+    <path name="loopback-aec">
+    </path>
+
+</mixer>
