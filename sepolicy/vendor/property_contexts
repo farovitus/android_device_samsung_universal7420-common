@@ -21,6 +21,7 @@ vendor.hwc.                      u:object_r:vendor_hwc_prop:s0
 
 # Touchscreen
 vendor.touch.stmfts.             u:object_r:vendor_stmfts_prop:s0
+persist.vendor.sensors.nk.       u:object_r:vendor_sensors_nk_prop:s0
 
 # modemloader
 hw.revision                      u:object_r:modemloader_prop:s0
