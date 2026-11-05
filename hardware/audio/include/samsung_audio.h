@@ -29,19 +29,24 @@
  * defined.
  */
 
+/*
+ * The 6.6 kernel's card (zero-wm1840) has one PCM, pcmC0D0, on the
+ * WM1840 AIF1: playback and capture. The normal and deep-buffer outputs
+ * share it, so the audio policy has only one output on it.
+ */
 #define MIXER_CARD 0
 #define SOUND_CARD 0
 
 /* Playback */
-#define SOUND_DEEP_BUFFER_DEVICE 3
-#define SOUND_PLAYBACK_DEVICE 4
+#define SOUND_DEEP_BUFFER_DEVICE 0
+#define SOUND_PLAYBACK_DEVICE 0
 #define SOUND_PLAYBACK_SCO_DEVICE 2
 
 /* Capture */
 #define SOUND_CAPTURE_DEVICE 0
 #define SOUND_CAPTURE_SCO_DEVICE 2
 
-/* Voice calls */
+/* Voice calls: no modem PCM on the 6.6 card yet, so these fail to open */
 #define SOUND_PLAYBACK_VOICE_DEVICE 1
 #define SOUND_CAPTURE_VOICE_DEVICE 1
 
