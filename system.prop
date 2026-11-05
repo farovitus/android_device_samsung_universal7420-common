@@ -13,8 +13,6 @@ debug.sf.predict_hwc_composition_strategy=0
 
 # LMKD
 ro.lmk.log_stats=true
-ro.lmk.use_minfree_levels=true
-ro.lmk.use_psi=false
 
 # Miracast (Wireless Display)
 wlan.wfd.hdcp=disable
