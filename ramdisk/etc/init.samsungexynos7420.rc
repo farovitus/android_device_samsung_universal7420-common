@@ -52,6 +52,9 @@ on post-fs
 on late-fs
     # Start services for Boot Animation
     start servicemanager
+    # SurfaceFlinger needs the composer at once, and init cannot start a
+    # lazy HAL while it is blocked in mount_all --late below.
+    start vendor.hwcomposer-2-1
     start surfaceflinger
     start bootanim
     start vendor.gralloc-2-0
