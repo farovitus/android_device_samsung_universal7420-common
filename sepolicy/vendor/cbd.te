@@ -7,8 +7,6 @@ allow cbd proc_net:file r_file_perms;
 allow cbd sysfs_mipi:file r_file_perms;
 
 #audit2allow
-allow cbd block_device:blk_file { open read };
-allow cbd radio_prop:property_service set;
 allow cbd sysfs:dir read;
-allow cbd sysfs_modem:dir { rw_file_perms search };
+allow cbd sysfs_modem:dir r_dir_perms;
 allow cbd sysfs_modem:file rw_file_perms;
