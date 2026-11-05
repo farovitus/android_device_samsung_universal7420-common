@@ -195,9 +195,6 @@ VENDOR_SECURITY_PATCH := 2018-06-01
 # Vendor separation
 TARGET_COPY_OUT_VENDOR := system/vendor
 
-# WFD
-BOARD_USES_WFD := true
-
 # Wifi: mainline brcmfmac over plain nl80211. The Broadcom vendor HAL
 # stays; supplicant and hostapd use the stub driver-command library.
 BOARD_WLAN_DEVICE                := bcmdhd
