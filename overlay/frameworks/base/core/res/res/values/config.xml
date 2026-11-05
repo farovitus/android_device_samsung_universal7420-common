@@ -754,10 +754,7 @@
          * The remote submix module "audio.r_submix.default" must be installed on the device.
          * The device must be provisioned with HDCP keys (for protected content).
     -->
-    <bool name="config_enableWifiDisplay">true</bool>
-
-    <!-- minigbm has no protected (secure) buffer heap on the 6.6 kernel -->
-    <bool name="config_wifiDisplaySupportsProtectedBuffers">false</bool>
+    <bool name="config_enableWifiDisplay">false</bool>
     
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
