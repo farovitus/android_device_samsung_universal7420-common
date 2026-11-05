@@ -78,7 +78,6 @@ $(call inherit-product, vendor/nk/gfx/nk_gfx.mk)
 
 # BSP
 PRODUCT_PACKAGES += \
-	memtrack.universal7420 \
 	libhwc2on1adapter \
 	libion
 
@@ -212,11 +211,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
-
-# Memory
-PRODUCT_PACKAGES += \
-	android.hardware.memtrack@1.0-impl \
-	android.hardware.memtrack@1.0-service
 
 # Network
 PRODUCT_PACKAGES += \
