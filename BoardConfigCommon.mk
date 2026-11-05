@@ -140,6 +140,10 @@ endif
 ifeq ($(NK_HAS_SEC_TOUCH),true)
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest_touch.xml
 endif
+# The multihal declares the AIDL sensors HAL in its own VINTF fragment.
+ifneq ($(NK_HAS_SENSORHUB),true)
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest_sensors_hidl.xml
+endif
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
