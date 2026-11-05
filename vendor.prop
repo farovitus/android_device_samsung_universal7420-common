@@ -29,7 +29,6 @@ ro.chipname=exynos7420
 ro.arch=exynos7420
 
 # Graphics
-ro.vendor.winupdate=1
 ro.hardware.egl=mesa
 ro.hardware.gralloc=minigbm
 ro.hardware.hwcomposer=s6kms
@@ -43,9 +42,6 @@ ro.debug_level=0x494d
 telephony.lteOnCdmaDevice=0
 vendor.sec.rild.libpath=/vendor/lib64/libsec-ril.so
 vendor.sec.rild.libpath2=/vendor/lib64/libsec-ril-dsds.so
-
-# SLSI
-debug.slsi_platform=1
 
 # SoC
 ro.soc.manufacturer=Samsung
