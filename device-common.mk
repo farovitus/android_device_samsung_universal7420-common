@@ -66,9 +66,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-	android.hardware.bluetooth@1.0-impl:64 \
-	android.hardware.bluetooth@1.0-service \
-	libbt-vendor
+	android.hardware.bluetooth@1.1-service.btlinux
 
 # Boot animation
 TARGET_BOOTANIMATION_PRELOAD := true
@@ -423,6 +421,7 @@ PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
 $(call inherit-product, vendor/nk/wifi/nk_wifi.mk)
+$(call inherit-product, vendor/nk/bluetooth/nk_bluetooth.mk)
 
 # call the proprietary setup
 $(call inherit-product, vendor/samsung/universal7420-common/universal7420-common-vendor.mk)

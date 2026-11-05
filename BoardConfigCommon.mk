@@ -43,10 +43,9 @@ TARGET_NR_CPUS := 8
 TARGET_AUDIOHAL_VARIANT := samsung_7420
 AUDIOSERVER_MULTILIB := 32
 
-# Bluetooth
-BOARD_CUSTOM_BT_CONFIG := $(COMMON_PATH)/configs/bluetooth/libbt_vndcfg.txt
+# Bluetooth: the NK 6.6 kernel runs the BCM4358 through hci_bcm, so the
+# Linux HCI HAL (btlinux) replaces the libbt-vendor UART stack.
 BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Bootloader
 TARGET_NO_BOOTLOADER := true
