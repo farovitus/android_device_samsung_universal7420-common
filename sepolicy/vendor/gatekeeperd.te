@@ -1,2 +1,0 @@
-# gatekeeper.te
-allow gatekeeperd init:binder call;
