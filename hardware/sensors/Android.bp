@@ -1,0 +1,39 @@
+//
+// Copyright (C) 2026 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// IIO sub-HAL for the AOSP sensors multihal
+// (android.hardware.sensors-service.multihal), which loads it through
+// /vendor/etc/sensors/hals.conf.
+cc_library_shared {
+    name: "sensors.universal7420-iio",
+    vendor: true,
+    relative_install_path: "hw",
+    srcs: ["IioSensors.cpp"],
+    header_libs: ["android.hardware.sensors@2.X-multihal.header"],
+    shared_libs: [
+        "android.hardware.sensors@1.0",
+        "android.hardware.sensors@2.0",
+        "android.hardware.sensors@2.0-ScopedWakelock",
+        "android.hardware.sensors@2.1",
+        "libbase",
+        "libhidlbase",
+        "liblog",
+        "libutils",
+    ],
+    cflags: [
+        "-DLOG_TAG=\"sensors.universal7420-iio\"",
+        "-Wall",
+        "-Werror",
+    ],
+}
+
+prebuilt_etc {
+    name: "hals.conf.universal7420",
+    vendor: true,
+    src: "hals.conf",
+    filename: "hals.conf",
+    sub_dir: "sensors",
+}
