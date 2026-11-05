@@ -175,3 +175,6 @@ genfscon sysfs /devices/platform/sec-battery-compat/power_supply    u:object_r:s
 # 6.6: the BCM4773 bridge. lhd drives the hub's power line through nstandby.
 genfscon sysfs /devices/platform/bbd.0                              u:object_r:sysfs_bbd:s0
 genfscon sysfs /devices/platform/bbd.0/nstandby                     u:object_r:sysfs_gps_writable:s0
+
+# 6.6: the BCM4773 sensor hub's IIO devices, under the SPI1 controller.
+genfscon sysfs /devices/platform/soc@0/14d30000.spi                 u:object_r:sysfs_ssp_iio:s0

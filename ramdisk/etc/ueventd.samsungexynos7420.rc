@@ -160,6 +160,34 @@
 # BCM4773 power line on the NK 6.6 kernel, driven by lhd
 /sys/devices/platform/bbd.0    nstandby    0660    gps    system
 
+# BCM4773 sensor hub IIO devices on the NK 6.6 kernel, for the sensors HAL
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    sampling_frequency                     0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    buffer/enable                          0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    buffer/length                          0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_accel_x_en            0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_accel_y_en            0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_accel_z_en            0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_anglvel_x_en          0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_anglvel_y_en          0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_anglvel_z_en          0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_magn_x_en             0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_magn_y_en             0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_magn_z_en             0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_pressure_en           0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_temp_en               0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_intensity_red_en      0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_intensity_green_en    0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_intensity_blue_en     0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_intensity_clear_en    0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_intensity0_en         0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_intensity1_en         0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_proximity0_en         0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_proximity1_en         0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_rot_quaternion_en     0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_steps_en              0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_activity_en           0664    system    system
+/sys/devices/platform/soc@0/14d30000.spi/spi_master/spi*/spi*.0/*/*/iio:device*    scan_elements/in_timestamp_en          0664    system    system
+
 # Reactivation lock
 /dev/block/platform/15570000.ufs/by-name/STEADY    0660    system    system
 
