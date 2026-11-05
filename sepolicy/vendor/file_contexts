@@ -95,6 +95,7 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.gatekeeper@1\.0-service\.software       u:object_r:hal_gatekeeper_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.neuralnetworks@1\.1-service-armnn       u:object_r:hal_neuralnetworks_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator-service\.universal7420        u:object_r:hal_vibrator_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.light-service\.universal7420           u:object_r:hal_light_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.2-service\.exynos7420            u:object_r:hal_nfc_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay@2\.1-service\.zero            u:object_r:hal_lineage_livedisplay_exynos_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay@2\.1-service\.noble           u:object_r:hal_lineage_livedisplay_exynos_exec:s0
@@ -174,6 +175,10 @@
 /sys/devices/[0-9]+\.hsi2c/i2c-[0-9]+/[0-9]+-[0-9]+/leds-max77833-rgb(/.*)?     u:object_r:sysfs_light:s0
 /sys/devices/[0-9]+\.hsi2c/i2c-[0-9]+/[0-9]+-[0-9]+/leds-max77843-rgb(/.*)?     u:object_r:sysfs_light:s0
 /sys/devices/[0-9]+\.hsi2c/i2c-[0-9]+/[0-9]+-[0-9]+/s2mpb02-led(/.*)?           u:object_r:sysfs_light:s0
+# NK 6.6 kernel: mainline panel backlight, MAX77843 multicolor LED, touchkey
+/sys/devices/platform/soc@0/13900000\.dsi/13900000\.dsi\.0/backlight/s6e3ha2(/.*)?          u:object_r:sysfs_backlight_writable:s0
+/sys/devices/platform/i2c-max77843/i2c-[0-9]+/[0-9]+-0066/max77843-led/leds(/.*)?         u:object_r:sysfs_light:s0
+/sys/devices/platform/i2c-touchkey/i2c-[0-9]+/[0-9]+-0020/sec/sec_touchkey(/.*)?          u:object_r:sysfs_sec_touchkey:s0
 
 # mDNIe
 /sys/devices/[0-9]+\.dsim/lcd/panel/mdnie(/.*)                         u:object_r:sysfs_mdnie:s0 

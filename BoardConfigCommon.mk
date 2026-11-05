@@ -111,12 +111,6 @@ BOARD_KERNEL_PREBUILT_DT := true
 BOARD_RAMDISK_USE_XZ := true
 BOARD_USES_FULL_RECOVERY_IMAGE := false
 
-# LED
-RED_LED_PATH := "/sys/class/leds/led_r/brightness"
-GREEN_LED_PATH := "/sys/class/leds/led_g/brightness"
-BLUE_LED_PATH := "/sys/class/leds/led_b/brightness"
-BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
-
 ## Lineage Health
 TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH := /sys/class/power_supply/battery/charging_enabled
 TARGET_HEALTH_CHARGING_CONTROL_CHARGING_ENABLED := 1
