@@ -473,6 +473,16 @@ static int mixer_init(struct audio_device *adev)
 
 mixer_paths_def:
 #endif
+            /*
+             * Paths named after the card first: the device tree may also
+             * install mixer_paths_<n>.xml for another kernel's card, whose
+             * controls this card does not have.
+             */
+            snprintf(mixer_path, sizeof(mixer_path), "/vendor/etc/mixer_paths_%s.xml",
+                     mixer_get_name(mixer));
+            if (access(mixer_path, F_OK) == 0)
+                goto mixer_paths_found;
+
             sprintf(mixer_path, "/vendor/etc/mixer_paths_%d.xml", card);
             if (access(mixer_path, F_OK) == -1) {
                 ALOGW("%s: Failed to open mixer paths from %s, retrying with legacy location",
@@ -487,6 +497,8 @@ mixer_paths_def:
 #ifdef MIXER_PATHS_FILE_ROUTINE
 mixer_paths_done:
 #endif
+mixer_paths_found:
+            ALOGI("%s: card %d uses %s", __func__, card, mixer_path);
             audio_route = audio_route_init(card, mixer_path);
             if (!audio_route) {
                 ALOGE("%s: Failed to init audio route controls for card %d, aborting.",
