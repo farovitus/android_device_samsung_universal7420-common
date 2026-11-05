@@ -79,15 +79,8 @@ $(call inherit-product, vendor/nk/gfx/nk_gfx.mk)
 # BSP
 PRODUCT_PACKAGES += \
 	memtrack.universal7420 \
-	gralloc.exynos7420 \
-	hwcomposer.universal7420 \
-	libcsc \
-	libexynosscaler \
-	libexynosgscaler \
 	libhwc2on1adapter \
-	libhwc2onfbadapter \
 	libion \
-	libion_exynos \
 	libstagefrighthw \
 	libExynosOMX_Core \
 	libExynosOMX_Resourcemanager \
