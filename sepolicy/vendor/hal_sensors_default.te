@@ -31,10 +31,13 @@ allow hal_sensors_default {
     sysfs_hrm
     sysfs_spi_writeable
     sysfs_ssp
+}:file rw_file_perms;
+
+allow hal_sensors_default {
     sysfs_sensors
     sysfs_input
     sysfs_battery
-}:file rw_file_perms;
+}:file r_file_perms;
 
 allow hal_sensors_default {
     sysfs_grip
