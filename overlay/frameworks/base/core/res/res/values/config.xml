@@ -911,9 +911,6 @@ Add a comment to this line
          Choices are: FULL, NORMAL, OFF. -->
     <string name="db_wal_sync_mode" translatable="false">NORMAL</string>
 
-    <!-- Whether device supports double tap to wake -->
-    <bool name="config_supportDoubleTapWake">true</bool>
-
     <!-- Smart charging -->
     <bool name="config_smartChargingAvailable">true</bool>
     <integer name="config_smartChargingBatteryLevel">80</integer>
