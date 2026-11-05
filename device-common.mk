@@ -359,10 +359,18 @@ PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/configs/sensor/lhd-nk.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensor/lhd-nk.conf
 endif
 
-# Sensors
+# Sensors: the AOSP multihal with the IIO sub-HAL on the NK kernel,
+# Samsung's HIDL HAL otherwise.
+ifeq ($(NK_HAS_SENSORHUB),true)
+PRODUCT_PACKAGES += \
+	android.hardware.sensors-service.multihal \
+	hals.conf.universal7420 \
+	sensors.universal7420-iio
+else
 PRODUCT_PACKAGES += \
 	android.hardware.sensors@1.0-impl.samsung:64 \
 	android.hardware.sensors@1.0-service
+endif
 
 # Sensor shim
 PRODUCT_PACKAGES += \
