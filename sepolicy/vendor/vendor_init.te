@@ -41,14 +41,12 @@ allow vendor_init debugfs_tracing_debug:file write;
 allow vendor_init mediaserver_exec:file read;
 allow vendor_init proc_min_free_order_shift:file rw_file_perms;
 allow vendor_init proc_overcommit_memory:file rw_file_perms;
-allow vendor_init system_data_file:file { setattr write };
 allow vendor_init system_data_root_file:dir setattr;
 allow vendor_init tmpfs:lnk_file create;
 
 allow vendor_init wpa_socket:dir getattr;
 
 allow vendor_init mediaserver_exec:file getattr;
-allow vendor_init system_data_file:file open;
 
 get_prop(vendor_init, clatd_radio_prop)
 get_prop(vendor_init, vts_status_prop)
