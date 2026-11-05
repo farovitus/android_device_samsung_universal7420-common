@@ -28,7 +28,7 @@ on boot
     chmod 664 /dev/cpuset/foreground/cpus
     chmod 664 /dev/cpuset/background/cpus
     chmod 664 /dev/cpuset/system-background/cpus
-    chmod 666 /dev/cpuset/restricted/cpus
+    chmod 0664 /dev/cpuset/restricted/cpus
     write /dev/cpuset/top-app/cpus 0-7
     write /dev/cpuset/top-app/mems 0
     write /dev/cpuset/foreground/cpus 0-6
