@@ -109,7 +109,6 @@ on post-fs-data
 # [ SEC_SELINUX_PORTING_COMMON
     restorecon --recursive /efs
     restorecon --recursive /cpefs
-    restorecon --recursive /sys/kernel/debug/tracing/trace_marker
 # ] SEC_SELINUX_PORTING_COMMON
 
 on boot
