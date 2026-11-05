@@ -24,10 +24,5 @@ persist.sys.wfd.virtual=0
 # NFC
 ro.nfc.fw_dl_on_boot=false
 
-# OMX
-debug.stagefright.ccodec=0
-debug.stagefright.omx_default_rank=0
-debug.stagefright.omx_default_rank.sw-audio=1
-
 # Recovery
 persist.vendor.recovery_update=false
