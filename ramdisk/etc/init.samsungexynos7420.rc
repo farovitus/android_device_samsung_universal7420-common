@@ -6,8 +6,6 @@ import /vendor/etc/init/hw/init.power.rc
 import /vendor/etc/init/hw/init.battery.rc
 
 on early-init
-    mount debugfs /sys/kernel/debug /sys/kernel/debug mode=755
-
     # ZRAM setup; vendor/nk's nk-modules.rc loads zram and sets lz4.
     write /proc/sys/vm/page-cluster 0
     write /proc/sys/vm/swappiness 100
@@ -73,7 +71,6 @@ on post-fs-data
 # [ SEC_SELINUX_PORTING_COMMON
     restorecon --recursive /efs
     restorecon --recursive /cpefs
-    restorecon /sys/kernel/debug/tracing/trace_marker
 # ] SEC_SELINUX_PORTING_COMMON
 
 # Permissions for audio
@@ -227,18 +224,6 @@ on boot
     # IPSec for VOLTE
     chown root system /dev/socket
     chmod 0775 /dev/socket
-
-    # Allow to access debugfs
-    chmod 755 /sys/kernel/debug
-
-    # Set up kernel tracing, but disable it by default
-    chmod 0222 /sys/kernel/debug/tracing/trace_marker
-    write /sys/kernel/debug/tracing/tracing_on 0
-    chmod 0755 /sys/kernel/debug/tracing
-    restorecon /sys/kernel/debug/tracing/trace_marker
-
-    # ASV
-    chown system system /d/asv_summary
 
     chown bluetooth bluetooth /dev/ttySAC4
     chmod 0660 /dev/ttySAC4
