@@ -1,8 +1,8 @@
-Kernel 6.6.144-4k-gb74129f3667c, SM_G920F lineage-20-android15-6.6 commit b74129f3667c, built with ./build.sh --clean --zip.
+Kernel 6.6.144-4k-g906da4804bb9, SM_G920F lineage-20-android15-6.6 commit 906da4804bb9, built with ./build.sh --zip.
 
 Image   S-Boot variant of arch/arm64/boot/Image: arm64 header text_offset
         (offset 8) set to 0x205000. S-Boot does not boot the unpatched Image.
-        sha256 54c416bcd713b500d1893fb08a6bd79cfa200b868b6efbf292c062603ad2fdf5
+        sha256 44f9cdb8b456bc27e07fef077fa3b8a1706ab142d674bc8a0156e1f460fbdfac
 dt.img  dtbTool DT image, zeroflte EUR revisions 00-07, for the boot
         image's --dt slot.
         sha256 232b1e99a76aa1551003ce84eb1f190ddfb8e1357c123e8bef40ae4e2c72ff91
