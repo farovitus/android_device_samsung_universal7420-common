@@ -24,6 +24,10 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
 	device/samsung/universal7420-common/overlay/hardware/samsung/AdvancedDisplay
 
+# Tethering is an APEX module, so its overlay must be a runtime one.
+PRODUCT_PACKAGES += \
+	TetheringConfigOverlayUniversal7420
+
 # Additional native libraries
 PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt

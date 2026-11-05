@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- USB tethering uses the NCM function (ncm.gs6 in
+         init.samsungexynos7420.usb.rc); the gadget has no RNDIS function.
+         0: RNDIS, 1: NCM. Its usb0 interface matches the default
+         config_tether_usb_regexs. -->
+    <integer name="config_tether_usb_functions">1</integer>
+</resources>
