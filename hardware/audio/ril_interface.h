@@ -17,7 +17,7 @@
 #ifndef RIL_INTERFACE_H
 #define RIL_INTERFACE_H
 
-#include <samsung_audio.h>
+#include "nk_samsung_audio.h"
 #include <secril-client.h>
 
 /**

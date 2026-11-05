@@ -41,7 +41,7 @@
 #include <cutils/sched_policy.h>
 #include <cutils/properties.h>
 
-#include <samsung_audio.h>
+#include "nk_samsung_audio.h"
 
 #include <hardware/audio_effect.h>
 #include <system/thread_defs.h>

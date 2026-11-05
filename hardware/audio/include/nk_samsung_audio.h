@@ -16,8 +16,8 @@
 
 #include <telephony/ril.h>
 
-#ifndef SAMSUNG_AUDIO_H
-#define SAMSUNG_AUDIO_H
+#ifndef NK_SAMSUNG_AUDIO_H
+#define NK_SAMSUNG_AUDIO_H
 
 /*
  * Sound card specific defines.
@@ -121,4 +121,4 @@
  */
 // #define AUDIENCE_SUPPORTED
 
-#endif // SAMSUNG_AUDIO_H
+#endif // NK_SAMSUNG_AUDIO_H
