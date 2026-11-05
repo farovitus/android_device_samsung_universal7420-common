@@ -17,12 +17,8 @@
             <defaultOutputDevice>Speaker</defaultOutputDevice>
 
             <mixPorts>
-                <!-- Playback(Output) Streams -->
+                <!-- Playback(Output) Streams: one, as the card has one playback PCM -->
                 <mixPort name="primary-out" role="source" flags="AUDIO_OUTPUT_FLAG_PRIMARY AUDIO_OUTPUT_FLAG_DEEP_BUFFER">
-                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                             samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-                </mixPort>
-                <mixPort name="fast" role="source" flags="AUDIO_OUTPUT_FLAG_FAST">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
@@ -91,19 +87,19 @@
 
             <routes>
                 <route sink="Earpiece" type="mix"
-                       sources="primary-out,fast"/>
+                       sources="primary-out"/>
                 <route sink="Speaker" type="mix"
-                       sources="primary-out,fast"/>
+                       sources="primary-out"/>
                 <route sink="Wired Headset" type="mix"
-                       sources="primary-out,fast"/>
+                       sources="primary-out"/>
                 <route sink="Wired Headphone" type="mix"
-                       sources="primary-out,fast"/>
+                       sources="primary-out"/>
                 <route sink="Bt Sco" type="mix"
-                       sources="primary-out,fast"/>
+                       sources="primary-out"/>
                 <route sink="Bt Sco Headset" type="mix"
-                       sources="primary-out,fast"/>
+                       sources="primary-out"/>
                 <route sink="Bt Sco Car Kit" type="mix"
-                       sources="primary-out,fast"/>
+                       sources="primary-out"/>
 
                 <route sink="primary-in" type="mix"
                        sources="Built-In Mic,Built-In Back Mic,Wired Headset Mic,Bt Sco Headset Mic"/>
