@@ -115,8 +115,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/prebuilt/dt.img:dt.img
 
-# Task profiles. The system cgroups.json covers every controller the
-# 6.6 kernel has, so no vendor cgroups.json is shipped.
+# Task profiles: only the overrides of the system task_profiles.json.
+# SurfaceFlinger composes every frame on the GPU, so its main thread and
+# RenderEngine join the foreground cpuset (A53 and A57) instead of
+# system-background (A53 only). The system cgroups.json covers every
+# controller the 6.6 kernel has, so no vendor cgroups.json is shipped.
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
 
