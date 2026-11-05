@@ -85,27 +85,24 @@ PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 HWUI_COMPILE_FOR_PERF := true
 
 # Kernel
+# The 6.6 kernel is built outside the ROM (SM_G920F ./build.sh --zip);
+# prebuilt/ holds its Image and the dtbTool DT image S-Boot reads from
+# the boot image's dt slot.
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_ADDITIONAL_FLAGS := \
-    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument" \
-    KBUILD_BUILD_USER=$(BUILD_USERNAME) KBUILD_BUILD_HOST=$(BUILD_HOSTNAME)
 BOARD_KERNEL_BASE := 0x10000000
 # BOARD_KERNEL_CMDLINE := commandline from boot.img by bootloader
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
-TARGET_KERNEL_SOURCE := kernel/samsung/universal7420
-TARGET_LINUX_KERNEL_VERSION := 3.10
+TARGET_PREBUILT_KERNEL := $(COMMON_PATH)/prebuilt/Image
+TARGET_LINUX_KERNEL_VERSION := 6.6
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
 BOARD_KERNEL_SEPARATED_DT := true
+BOARD_KERNEL_PREBUILT_DT := true
 BOARD_RAMDISK_USE_XZ := true
-TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
-TARGET_KERNEL_LLVM_BINUTILS := false
 BOARD_USES_FULL_RECOVERY_IMAGE := false
-TARGET_KERNEL_CLANG_VERSION := r416183b
-TARGET_KERNEL_CLANG_PATH := $(abspath .)/prebuilts/clang/kernel/$(HOST_PREBUILT_TAG)/clang-$(TARGET_KERNEL_CLANG_VERSION)
 
 # LED
 RED_LED_PATH := "/sys/class/leds/led_r/brightness"
