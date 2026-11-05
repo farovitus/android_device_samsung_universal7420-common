@@ -7,7 +7,15 @@ dt.img  dtbTool DT image, zeroflte EUR revisions 00-07, for the boot
         image's --dt slot.
         sha256 6adafe7b00974c1fd05dfe3365b14b6f5ca9b0d1156c11a2fa99290e0f229b03
 
-Replace both files together, from one build, and update this file.
+modules/  the build's 116 loadable modules (*.ko), vermagic
+        6.6.144-4k-g7d8125917fbb. BOARD_VENDOR_KERNEL_MODULES installs
+        them in /vendor/lib/modules, and depmod at build time writes
+        modules.dep there. The kernel refuses modules from another build.
+        sha256 of the "shasum -a 256 *.ko" listing:
+        d223932da0f98bb0ed10c7f61235dc5760d3edb751cee72af31f56a5110adafc
+
+Replace Image, dt.img and modules/ together, from one build, and update
+this file.
 
 Kernel headers
 --------------
