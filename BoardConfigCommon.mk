@@ -97,8 +97,10 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 -
 TARGET_PREBUILT_KERNEL := $(COMMON_PATH)/prebuilt/Image
 TARGET_LINUX_KERNEL_VERSION := 6.6
 # Kernel source for Lineage's headers_install only (device_kernel_headers);
-# the kernel itself is the prebuilt above. See prebuilt/README.
-TARGET_KERNEL_SOURCE := kernel/samsung/universal7420-6.6
+# the kernel itself is the prebuilt above. See prebuilt/README. This is the
+# 3.10 tree: Lineage installs one arm64 header set for both ABIs, and only
+# its sigcontext.h avoids __uint128_t, which 32-bit clang lacks.
+TARGET_KERNEL_SOURCE := kernel/samsung/universal7420
 # With the source present, kernel.mk builds it unless forced to the prebuilt.
 TARGET_FORCE_PREBUILT_KERNEL := true
 BOARD_KERNEL_IMAGE_NAME := Image

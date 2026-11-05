@@ -14,12 +14,19 @@ Kernel headers
 Lineage 20 always generates the kernel UAPI headers (device_kernel_headers
 is rewritten to generated_kernel_headers) by running headers_install on
 TARGET_KERNEL_SOURCE, so the build needs kernel source even with a
-prebuilt kernel. libtinycompress is the user in this build. Check out
-AOSP kernel/common at the commit the 6.6 port is based on; the port
-changes no UAPI header, so these match the prebuilt kernel. Add to
-.repo/local_manifests/ and repo sync that path:
+prebuilt kernel. TARGET_FORCE_PREBUILT_KERNEL keeps kernel.mk from
+building that source. libtinycompress is the user in this build.
 
-  <project path="kernel/samsung/universal7420-6.6" name="kernel/common" remote="aosp" revision="33f64c1712cc700513431ed498b35db84c20d411" upstream="android15-6.6" clone-depth="1" />
+The headers come from the 3.10 universal7420 kernel. headers_install runs
+once with ARCH=arm64, and the 32-bit libtinycompress (for the 32-bit audio
+HAL) also includes that asm/. The arm64 sigcontext.h in 6.6 uses
+__uint128_t, which 32-bit clang does not have; the 3.10 tree defines its
+own ___uint128_t struct instead. Add to .repo/local_manifests/ and repo
+sync that path:
 
-The "aosp" remote fetches from https://android.googlesource.com.
+  <project path="kernel/samsung/universal7420" name="samsungexynos7420/android_kernel_samsung_universal7420" remote="github" revision="lineage-20.0-unify-clang-2" clone-depth="1" />
+
+Built with 1de3d6e11448b14de2a6cd7dcc6f2ec94887d833. Moving to 6.6 UAPI
+headers needs a 6.6 tree whose arm64 sigcontext.h builds for 32-bit.
+
 Nothing in this checkout is compiled.
