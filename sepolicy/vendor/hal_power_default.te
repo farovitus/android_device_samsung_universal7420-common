@@ -16,7 +16,6 @@ allow hal_power_default{
     sysfs_devices_system_cpu
     sysfs_graphics
     sysfs_light
-    sysfs_input
 }:file rw_file_perms;
 
 # GPU devfreq floor (/sys/class/devfreq/14ac0000.gpu/min_freq).
