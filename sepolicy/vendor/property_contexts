@@ -35,10 +35,6 @@ persist.nfc.log.index            u:object_r:vendor_nfc_prop:s0
 vendor.nfc.fw.                   u:object_r:vendor_nfc_prop:s0 
 persist.vendor.nfc.log.index     u:object_r:vendor_nfc_prop:s0
 
-# OMX
-ro.vendor.cscsupported           u:object_r:vendor_omx_prop:s0
-ro.vendor.debug.omx.             u:object_r:vendor_omx_prop:s0
-
 # Radio
 persist.ril.interfaceconf.       u:object_r:radio_prop:s0
 persist.radio.multisim.          u:object_r:vendor_radio_prop:s0
