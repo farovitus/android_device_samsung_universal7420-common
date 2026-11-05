@@ -99,6 +99,8 @@ TARGET_LINUX_KERNEL_VERSION := 6.6
 # Kernel source for Lineage's headers_install only (device_kernel_headers);
 # the kernel itself is the prebuilt above. See prebuilt/README.
 TARGET_KERNEL_SOURCE := kernel/samsung/universal7420-6.6
+# With the source present, kernel.mk builds it unless forced to the prebuilt.
+TARGET_FORCE_PREBUILT_KERNEL := true
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
