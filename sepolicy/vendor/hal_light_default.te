@@ -9,6 +9,7 @@ allow hal_light_default{
 }:dir search;
 
 allow hal_light_default{
+    sysfs_backlight_writable
     sysfs_graphics
     sysfs_light
     sysfs_sec_led

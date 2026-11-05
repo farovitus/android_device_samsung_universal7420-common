@@ -167,3 +167,13 @@
 /dev/radio0               0660   system     audio
 
 /dev/rtc0                 0660   system     system
+
+# NK 6.6 kernel lights (android.hardware.light-service.universal7420).
+# delay_on and delay_off appear when the timer trigger is set; the trigger's
+# change uevent applies these to them.
+/sys/devices/platform/soc@0/13900000.dsi/13900000.dsi.0/backlight/s6e3ha2  brightness       0664  system  system
+/sys/devices/platform/i2c-max77843/i2c-*/*-0066/max77843-led/leds/rgb:status  brightness       0664  system  system
+/sys/devices/platform/i2c-max77843/i2c-*/*-0066/max77843-led/leds/rgb:status  multi_intensity  0664  system  system
+/sys/devices/platform/i2c-max77843/i2c-*/*-0066/max77843-led/leds/rgb:status  trigger          0664  system  system
+/sys/devices/platform/i2c-max77843/i2c-*/*-0066/max77843-led/leds/rgb:status  delay_on         0664  system  system
+/sys/devices/platform/i2c-max77843/i2c-*/*-0066/max77843-led/leds/rgb:status  delay_off        0664  system  system

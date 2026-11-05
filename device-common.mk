@@ -209,7 +209,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-	android.hardware.light-service.samsung
+	android.hardware.light-service.universal7420
 
 # Lineage Health
 PRODUCT_PACKAGES += \
