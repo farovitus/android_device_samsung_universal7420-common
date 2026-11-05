@@ -73,10 +73,6 @@ vendor/firmware/mfc_fw.bin
 vendor/firmware/seiren_fw_dram.bin
 vendor/firmware/seiren_fw_sram.bin
 
-# Graphics
-lib/egl/libGLES_mali.so:vendor/lib/egl/libGLES_mali.so
-lib64/egl/libGLES_mali.so:vendor/lib64/egl/libGLES_mali.so
-
 # NFC for S6/S6e
 vendor/etc/nfc/sec_s3fwrn5p_rfreg.bin
 vendor/firmware/nfc/sec_s3fwrn5p_firmware.bin
