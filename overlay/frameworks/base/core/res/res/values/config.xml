@@ -756,8 +756,8 @@
     -->
     <bool name="config_enableWifiDisplay">true</bool>
 
-    <!-- Our gralloc has support for protected buffers -->
-    <bool name="config_wifiDisplaySupportsProtectedBuffers">true</bool>
+    <!-- minigbm has no protected (secure) buffer heap on the 6.6 kernel -->
+    <bool name="config_wifiDisplaySupportsProtectedBuffers">false</bool>
     
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
