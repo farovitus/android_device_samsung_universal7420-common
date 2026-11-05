@@ -162,6 +162,9 @@ PRODUCT_PACKAGES += \
 
 # GNSS
 ifeq ($(NK_HAS_GPS),true)
+ifneq ($(NK_HAS_SENSORHUB),true)
+$(error NK_HAS_GPS needs NK_HAS_SENSORHUB: lhd runs the BCM4773)
+endif
 PRODUCT_PACKAGES += \
 	android.hardware.gnss@1.0-impl.universal7420 \
 	android.hardware.gnss@1.0-service.universal7420 \
@@ -347,6 +350,16 @@ PRODUCT_PACKAGES += \
 # SamsungDoze
 PRODUCT_PACKAGES += \
 	SamsungDoze
+
+# Sensor hub
+ifeq ($(NK_HAS_SENSORHUB),true)
+PRODUCT_PACKAGES += \
+	init.sensorhub.rc
+
+PRODUCT_COPY_FILES += \
+	$(COMMON_PATH)/configs/sensor/bcm4773_sensorhub.patch:$(TARGET_COPY_OUT_VENDOR)/etc/sensor/bcm4773_sensorhub.patch \
+	$(COMMON_PATH)/configs/sensor/lhd-nk.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensor/lhd-nk.conf
+endif
 
 # Sensors
 PRODUCT_PACKAGES += \
