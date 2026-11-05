@@ -66,9 +66,6 @@ lib64/libhwjpeg.so:vendor/lib64/libhwjpeg.so
 lib/libuniplugin.so:vendor/lib/libuniplugin.so
 lib64/libuniplugin.so:vendor/lib64/libuniplugin.so
 
-# Exynos Media Format Codec firmware
-vendor/firmware/mfc_fw.bin
-
 # Seiren Audio Firmware
 vendor/firmware/seiren_fw_dram.bin
 vendor/firmware/seiren_fw_sram.bin
