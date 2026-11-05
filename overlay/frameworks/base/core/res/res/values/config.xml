@@ -934,4 +934,8 @@ Add a comment to this line
      For devices with sensors on the back of the device, this corresponds to the location on the
      screen directly in front of the sensor. -->
     <dimen name="physical_fingerprint_sensor_center_screen_location_y">2560px</dimen>
+
+    <!-- The 6.6 kernel reports the headset jack as SW_HEADPHONE_INSERT and
+         SW_MICROPHONE_INSERT input events; there is no h2w switch device. -->
+    <bool name="config_useDevInputEventForAudioJack">true</bool>
 </resources>
