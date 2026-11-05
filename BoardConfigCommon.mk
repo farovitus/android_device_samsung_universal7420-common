@@ -139,6 +139,9 @@ endif
 ifeq ($(NK_HAS_GPS),true)
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest_gnss.xml
 endif
+ifeq ($(NK_HAS_SEC_TOUCH),true)
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest_touch.xml
+endif
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
