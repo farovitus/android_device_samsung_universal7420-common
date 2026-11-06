@@ -150,6 +150,8 @@ genfscon sysfs /devices/i2c.31/i2c-9/9-0020/input         u:object_r:sysfs_sec_t
 genfscon sysfs /devices/i2c.31/i2c-10/10-0010/input        u:object_r:sysfs_sec_touchkey:s0
 genfscon sysfs /devices/i2c.31/i2c-10/10-0020/input        u:object_r:sysfs_sec_touchkey:s0
 genfscon sysfs /devices/virtual/sec/sec_touchkey      u:object_r:sysfs_sec_touchkey:s0
+# 6.6: the touchkey controller is the only device on its i2c-gpio bus.
+genfscon sysfs /devices/platform/i2c-touchkey                  u:object_r:sysfs_sec_touchkey:s0
 
 # Touchscreen: the stmfts i2c controller and everything below it,
 # including the input device's name and inhibited attributes.
