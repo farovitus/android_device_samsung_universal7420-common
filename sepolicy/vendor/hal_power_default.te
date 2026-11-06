@@ -31,3 +31,6 @@ allow hal_power_default cgroup:file { getattr open read write };
 
 # Touchscreen power-down (vendor.touch.stmfts.inhibit).
 set_prop(hal_power_default, vendor_stmfts_prop)
+
+# Hint state properties (vendor.powerhal.state, .audio, .rendering).
+set_prop(hal_power_default, vendor_powerhal_prop)
