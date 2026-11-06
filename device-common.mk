@@ -451,5 +451,6 @@ $(call inherit-product, vendor/samsung/universal7420-common/universal7420-common
 # Soong namespaces
 $(call inherit-product, hardware/samsung_slsi-linaro/config/config.mk)
 
-# Bring-up logcat and test-boot auto-recovery cancel (debug builds only)
+# Bring-up logcat (debug builds only); vendor/nk/modules cancels the
+# test-boot auto-recovery in every build
 $(call inherit-product, vendor/nk/debug/nk_debug.mk)
