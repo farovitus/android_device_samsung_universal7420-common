@@ -23,6 +23,11 @@ vendor.hwc.                      u:object_r:vendor_hwc_prop:s0
 vendor.touch.stmfts.             u:object_r:vendor_stmfts_prop:s0
 persist.vendor.sensors.nk.       u:object_r:vendor_sensors_nk_prop:s0
 
+# Mesa and minigbm debug options. Both run inside every process that
+# draws (same-process HALs) and look these up on each option.
+vendor.mesa.                     u:object_r:vendor_graphics_debug_prop:s0
+vendor.minigbm.                  u:object_r:vendor_graphics_debug_prop:s0
+
 # Power HAL state (powerhint.json Property nodes)
 vendor.powerhal.                 u:object_r:vendor_powerhal_prop:s0
 
