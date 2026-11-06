@@ -1,6 +1,9 @@
 # init.te
 
 allow init efs_block_device:blk_file relabelto;
+# The by-name/EFS symlink matches the same file_contexts entry, so
+# restorecon of /dev gives it that type as well.
+allow init efs_block_device:lnk_file relabelto;
 
 # Bind mount files on /system
 allow init system_file:file mounton;
