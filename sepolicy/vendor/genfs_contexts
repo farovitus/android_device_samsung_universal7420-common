@@ -172,6 +172,12 @@ genfscon sysfs /kernel/mm/vmscan/mem_boost_mode                     u:object_r:s
 # 6.6: the sec-battery-compat "battery" and "ac" power supplies, including
 # battery/charging_enabled, which Lineage's health HAL writes.
 genfscon sysfs /devices/platform/sec-battery-compat/power_supply    u:object_r:sysfs_batteryinfo:s0
+# The MAX77843 fuel gauge and charger supplies, both MFD children of the
+# PMIC at 3-0066, which the health HAL enumerates under
+# /sys/class/power_supply. The i2c-gpio bus number is assigned at probe
+# (no DT alias); update these paths if it moves.
+genfscon sysfs /devices/platform/i2c-max77843/i2c-3/3-0066/max77843-fuelgauge/power_supply u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/i2c-max77843/i2c-3/3-0066/max77843-charger/power_supply u:object_r:sysfs_batteryinfo:s0
 
 # 6.6: the BCM4773 bridge. lhd drives the hub's power line through nstandby.
 genfscon sysfs /devices/platform/bbd.0                              u:object_r:sysfs_bbd:s0
@@ -186,3 +192,9 @@ genfscon sysfs /devices/platform/soc@0/14d30000.spi                 u:object_r:s
 genfscon sysfs /devices/platform/exynos-drm/uevent                  u:object_r:sysfs_gpu:s0
 genfscon sysfs /devices/platform/e2a00000.framebuffer/uevent        u:object_r:sysfs_gpu:s0
 genfscon sysfs /devices/platform/soc@0/14ac0000.gpu/uevent          u:object_r:sysfs_gpu:s0
+
+# 6.6: the power supplies' own wakeup directories. The platform lets
+# system_suspend search every sysfs directory and read sysfs_wakeup.
+genfscon sysfs /devices/platform/sec-battery-compat/power_supply/ac/wakeup u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/i2c-max77843/i2c-3/3-0066/max77843-fuelgauge/power_supply/max77843-fuelgauge/wakeup u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/i2c-max77843/i2c-3/3-0066/max77843-charger/power_supply/max77843-charger/wakeup u:object_r:sysfs_wakeup:s0
