@@ -102,6 +102,7 @@ genfscon sysfs /devices/virtual/bdi/254:0/read_ahead_kb     u:object_r:sysfs_blo
 
 # Modem
 genfscon sysfs /bus/platform/drivers/mif_sipc5              u:object_r:sysfs_modem:s0
+genfscon sysfs /devices/platform/soc@0/10f24000.mipi-lli/lli_control u:object_r:sysfs_mipi:s0
 genfscon sysfs /devices/10580000.pinctrl/gpio/gpio8         u:object_r:sysfs_modem:s0
 
 # PCIe
