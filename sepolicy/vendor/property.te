@@ -10,9 +10,6 @@ vendor_internal_prop(vendor_nfc_prop);
 # Radio
 vendor_internal_prop(clatd_radio_prop)
 
-# Macloader
-vendor_internal_prop(modemloader_prop);
-
 # Touchscreen and touchkey input inhibit
 vendor_internal_prop(vendor_touch_prop)
 
