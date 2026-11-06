@@ -4,3 +4,7 @@ allow surfaceflinger secmem_device:chr_file rw_file_perms;
 
 allow surfaceflinger sysfs_graphics:dir r_dir_perms;
 allow surfaceflinger sysfs_graphics:file rw_file_perms;
+
+# The composer stack loaded in surfaceflinger looks up vendor.hwc.*,
+# vendor.ddk.* and debug.hwc.* (vendor_restricted_prop in samsung_slsi).
+get_prop(surfaceflinger, vendor_hwc_prop)
