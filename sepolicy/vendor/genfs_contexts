@@ -200,3 +200,7 @@ genfscon sysfs /devices/platform/mdnie-compat                       u:object_r:s
 # number is assigned at probe (no DT alias).
 genfscon sysfs /devices/platform/soc@0/soc@0:usb@15400000/15400000.usb/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/i2c-tsp-main-pmic/i2c-1/1-0066/s2mps15-rtc/rtc/rtc0/alarmtimer.0.auto/wakeup u:object_r:sysfs_wakeup:s0
+# The Shannon 333 modem's wakeup source, and the battery supply's own
+# wakeup directory (the rest of the supply stays sysfs_batteryinfo).
+genfscon sysfs /devices/platform/modem/wakeup                       u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/sec-battery-compat/power_supply/battery/wakeup u:object_r:sysfs_wakeup:s0
