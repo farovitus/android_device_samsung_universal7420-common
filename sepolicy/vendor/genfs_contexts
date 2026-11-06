@@ -193,6 +193,10 @@ genfscon sysfs /devices/platform/exynos-drm/uevent                  u:object_r:s
 genfscon sysfs /devices/platform/e2a00000.framebuffer/uevent        u:object_r:sysfs_gpu:s0
 genfscon sysfs /devices/platform/soc@0/14ac0000.gpu/uevent          u:object_r:sysfs_gpu:s0
 
+# 6.6: mdnie-compat provides the mdnie and lcd/panel attributes that the
+# LiveDisplay HAL drives.
+genfscon sysfs /devices/platform/mdnie-compat                       u:object_r:sysfs_mdnie:s0
+
 # 6.6: the power supplies' own wakeup directories. The platform lets
 # system_suspend search every sysfs directory and read sysfs_wakeup.
 genfscon sysfs /devices/platform/sec-battery-compat/power_supply/ac/wakeup u:object_r:sysfs_wakeup:s0
