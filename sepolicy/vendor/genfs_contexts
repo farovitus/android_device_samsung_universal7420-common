@@ -177,3 +177,10 @@ genfscon sysfs /devices/platform/bbd.0/nstandby                     u:object_r:s
 
 # 6.6: the BCM4773 sensor hub's IIO devices, under its bit-banged SPI bus.
 genfscon sysfs /devices/platform/spi-gnss                           u:object_r:sysfs_ssp_iio:s0
+
+# 6.6 DRM: libdrm reads each DRM device's uevent to identify it (exynos-drm
+# display, the early simple-framebuffer, the panfrost GPU). sysfs_gpu is
+# what AOSP lets GPU clients read.
+genfscon sysfs /devices/platform/exynos-drm/uevent                  u:object_r:sysfs_gpu:s0
+genfscon sysfs /devices/platform/e2a00000.framebuffer/uevent        u:object_r:sysfs_gpu:s0
+genfscon sysfs /devices/platform/soc@0/14ac0000.gpu/uevent          u:object_r:sysfs_gpu:s0
