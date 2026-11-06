@@ -186,6 +186,17 @@ PRODUCT_PACKAGES += \
 	android.hardware.health@2.1-impl.recovery \
 	android.hardware.health@2.1-service
 
+# Hung-task detector: the system init.rc sets hung_task_timeout_secs to 0
+# and llkd.rc restores it only when ro.khungtask.enable is true. With it,
+# a task blocked for 120 s panics the kernel instead of hanging the phone
+# while the watchdog stays fed. Debug builds only: a user build should not
+# reboot on a long but finite I/O stall.
+ifneq ($(TARGET_BUILD_VARIANT),user)
+PRODUCT_SYSTEM_PROPERTIES += \
+	ro.khungtask.enable=true \
+	ro.khungtask.timeout=120
+endif
+
 # HIDL
 PRODUCT_PACKAGES += \
 	android.hidl.base@1.0 \
