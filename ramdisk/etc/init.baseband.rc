@@ -3,7 +3,10 @@ on init
     symlink /dev/block/platform/15570000.ufs/by-name/RADIO /dev/mbin0
     restorecon /dev/mbin0
 
-    symlink /sys/devices/10f24000.mipi-lli /dev/mipi-lli
+    # cbd sends link commands to lli_control through this link. On the NK
+    # 6.6 kernel MMIO devices sit under the soc@0 bus.
+    symlink /sys/devices/platform/soc@0/10f24000.mipi-lli /dev/mipi-lli
+    restorecon /dev/mipi-lli
 
     write /sys/class/net/rmnet0/queues/rx-0/rps_cpus 7
     write /sys/class/net/rmnet1/queues/rx-0/rps_cpus 7
