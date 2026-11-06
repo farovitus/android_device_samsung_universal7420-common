@@ -35,9 +35,9 @@
 /data/nfc(/.*)?                   u:object_r:nfc_data_file:s0
 /data/vendor/nfc(/.*)?            u:object_r:nfc_vendor_data_file:s0
 
-# Wi-fi
-/data/misc/conn/\.cid\.info        u:object_r:wifi_data_file:s0
-/data/misc/conn/\.wifiver\.info    u:object_r:wifi_data_file:s0
+# Wi-fi: init.wifi.rc creates /data/misc/conn and writes its .*.info
+# files from vendor_init. Label the directory so new files inherit it.
+/data/misc/conn(/.*)?              u:object_r:wifi_data_file:s0
 
 ##########################
 # Devices
