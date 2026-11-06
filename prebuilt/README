@@ -1,18 +1,18 @@
-Kernel 6.6.144-4k-gec7f80cfa22d, SM_G920F lineage-20-android15-6.6 commit ec7f80cfa22d, built with ./build.sh --zip.
+Kernel 6.6.144-4k-g507fef4cba0d, SM_G920F lineage-20-android15-6.6 commit 507fef4cba0d, built with ./build.sh --zip.
 
 Image   S-Boot variant of arch/arm64/boot/Image: arm64 header text_offset
         (offset 8) set to 0x205000. S-Boot does not boot the unpatched Image.
-        sha256 2b04a1931bc3bbf3468c1c42f45614a6efba76b0d570e80bd71dd9abdbd3c121
+        sha256 5274540605b23f59e582cf63b804c7d1397f3a75cfef961194985035a0f5e065
 dt.img  dtbTool DT image, zeroflte EUR revisions 00-07, for the boot
         image's --dt slot.
-        sha256 1ab0b881022239b833dd98c9eb906f5af134ab45c085babcc555fc447280674c
+        sha256 ca005ac7095ed06cb38fef0e717c67ff416ee35c98c82b0f0828e5058f2d64b1
 
 modules/  the build's 123 loadable modules (*.ko), vermagic
-        6.6.144-4k-gec7f80cfa22d. BOARD_VENDOR_KERNEL_MODULES installs
+        6.6.144-4k-g507fef4cba0d. BOARD_VENDOR_KERNEL_MODULES installs
         them in /vendor/lib/modules, and depmod at build time writes
         modules.dep there. The kernel refuses modules from another build.
         sha256 of the "shasum -a 256 *.ko" listing:
-        196504d1628d6183cc7c0dff789e38483917cec20caf42d50ab40547ee4f6a4c
+        bb286ae5c152f3761ccef50c3623956227df0cc28027f97a4f1ba35aa1d32347
 
 Replace Image, dt.img and modules/ together, from one build, and update
 this file.
