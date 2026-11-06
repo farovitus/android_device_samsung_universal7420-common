@@ -23,6 +23,9 @@ vendor.hwc.                      u:object_r:vendor_hwc_prop:s0
 vendor.touch.                    u:object_r:vendor_touch_prop:s0
 persist.vendor.sensors.nk.       u:object_r:vendor_sensors_nk_prop:s0
 
+# Power HAL state (powerhint.json Property nodes)
+vendor.powerhal.                 u:object_r:vendor_powerhal_prop:s0
+
 # NFC
 ro.debug_level                   u:object_r:vendor_nfc_prop:s0
 persist.nfc.log.index            u:object_r:vendor_nfc_prop:s0

@@ -13,5 +13,8 @@ vendor_internal_prop(clatd_radio_prop)
 # Touchscreen and touchkey input inhibit
 vendor_internal_prop(vendor_touch_prop)
 
+# Power HAL state
+vendor_internal_prop(vendor_powerhal_prop)
+
 # Sensors HAL calibration (persist.vendor.sensors.nk.*)
 vendor_internal_prop(vendor_sensors_nk_prop)

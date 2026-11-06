@@ -56,5 +56,7 @@ get_prop(vendor_init, vendor_touch_prop)
 set_prop(vendor_init, vendor_nfc_prop)
 set_prop(vendor_init, vendor_audio_prop)
 set_prop(vendor_init, vendor_hwc_prop)
+# The libperfmgr power HAL rc sets vendor.powerhal.init on boot_completed.
+set_prop(vendor_init, vendor_powerhal_prop)
 set_prop(vendor_init, tee_prop)
 set_prop(vendor_init, vendor_radio_prop)
