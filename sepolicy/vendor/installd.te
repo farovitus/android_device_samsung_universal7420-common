@@ -1,4 +1,4 @@
 # installd.te
 
-allow installd mobicore_data_file:dir { getattr open read remove_name rmdir write };
+allow installd mobicore_data_file:dir { getattr open read remove_name rmdir search write };
 
