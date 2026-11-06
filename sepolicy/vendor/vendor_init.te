@@ -35,6 +35,8 @@ allow vendor_init wifi_data_file:file create_file_perms;
 
 allow vendor_init proc_reset_reason:file { rw_file_perms setattr };
 allow vendor_init proc_vm:file rw_file_perms;
+# init.samsungexynos7420.rc sets sched_util_clamp_min_rt_default.
+allow vendor_init proc_sched:file w_file_perms;
 allow vendor_init proc_simslot_count:file rw_file_perms;
 
 allow vendor_init debugfs_tracing_debug:file write;
