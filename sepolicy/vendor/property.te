@@ -13,6 +13,10 @@ vendor_internal_prop(clatd_radio_prop)
 # Touchscreen and touchkey input inhibit
 vendor_internal_prop(vendor_touch_prop)
 
+# Mesa and minigbm debug options, read by every graphics client
+vendor_restricted_prop(vendor_graphics_debug_prop)
+get_prop({ domain -isolated_app }, vendor_graphics_debug_prop)
+
 # Power HAL state
 vendor_internal_prop(vendor_powerhal_prop)
 
