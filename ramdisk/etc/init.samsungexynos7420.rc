@@ -12,6 +12,9 @@ on early-init
 
 on init
     start watchdogd
+    # RT tasks default to uclamp.min 1024, so each RT wakeup drives
+    # schedutil to the top OPP. Let RT load set the frequency instead.
+    write /proc/sys/kernel/sched_util_clamp_min_rt_default 0
     # RIL <-> audioserver comm
     chmod 0644 /proc/cmdline
     
