@@ -23,12 +23,6 @@ vendor.hwc.                      u:object_r:vendor_hwc_prop:s0
 vendor.touch.stmfts.             u:object_r:vendor_stmfts_prop:s0
 persist.vendor.sensors.nk.       u:object_r:vendor_sensors_nk_prop:s0
 
-# modemloader
-hw.revision                      u:object_r:modemloader_prop:s0
-ro.cbd.dt_revision               u:object_r:modemloader_prop:s0
-ril.cbd.dt_revision              u:object_r:modemloader_prop:s0
-ro.modemloader.done              u:object_r:modemloader_prop:s0
-
 # NFC
 ro.debug_level                   u:object_r:vendor_nfc_prop:s0
 persist.nfc.log.index            u:object_r:vendor_nfc_prop:s0
