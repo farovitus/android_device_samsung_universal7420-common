@@ -312,6 +312,7 @@ PRODUCT_COPY_FILES += \
 ifeq ($(NK_HAS_MODEM),true)
 PRODUCT_PACKAGES += \
 	cbd \
+	init.nk-modem.rc \
 	android.hardware.radio@1.2 \
 	android.hardware.radio@1.3 \
 	android.hardware.radio@1.4 \

@@ -1,0 +1,25 @@
+# Modem builds (NK_HAS_MODEM=true). cbd and the RIL daemons start with
+# class main, as on stock. Builds without the modem (NK_HAS_MODEM=false)
+# ship init.nk-nomodem.rc instead, and no radio HAL in the VINTF manifest,
+# so nothing waits for IRadio.
+#
+# These definitions replace the vendor init.vendor.rilchip.rc ones only to
+# drop its "onrestart restart DIAG-daemon" lines: no DIAG-daemon service
+# exists, and each RIL restart logged a failure. "override" wins whichever
+# file init parses first.
+service ril-daemon /vendor/bin/hw/rild -l ${vendor.sec.rild.libpath}
+    override
+    class main
+    user radio
+    group radio cache inet misc audio sdcard_r sdcard_rw log vpn system readproc wakelock
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW SYS_ADMIN CHOWN SYS_TIME
+    socket sap_uim_socket1 stream 660 bluetooth bluetooth
+    onrestart restart cpboot-daemon
+
+service ril-daemon1 /vendor/bin/hw/rild -c 2 -l ${vendor.sec.rild.libpath2}
+    override
+    class main
+    user radio
+    group radio cache inet misc audio sdcard_r sdcard_rw log vpn system readproc wakelock
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW SYS_ADMIN CHOWN SYS_TIME
+    onrestart restart cpboot-daemon
