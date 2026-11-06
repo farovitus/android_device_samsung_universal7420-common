@@ -7,7 +7,7 @@ NK_HAS_CAMERA ?= false
 NK_HAS_NFC ?= false
 # Sensor hub: the BCM4773's bridge and ssp_sensors modules, and lhd,
 # which loads the hub's RAM patch and runs its firmware.
-NK_HAS_SENSORHUB ?= false
+NK_HAS_SENSORHUB ?= true
 # GPS (gpsd and the GNSS HAL) also runs on the BCM4773 through lhd, so it
 # needs NK_HAS_SENSORHUB.
 NK_HAS_GPS ?= false
