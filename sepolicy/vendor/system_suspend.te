@@ -1,5 +1,0 @@
-# system_suspend.te
-
-# Wakeup sources registered by the power supplies sit in wakeupN
-# directories under their sysfs_batteryinfo devices.
-r_dir_file(system_suspend, sysfs_batteryinfo)

@@ -204,3 +204,8 @@ genfscon sysfs /devices/platform/i2c-tsp-main-pmic/i2c-1/1-0066/s2mps15-rtc/rtc/
 # wakeup directory (the rest of the supply stays sysfs_batteryinfo).
 genfscon sysfs /devices/platform/modem/wakeup                       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/sec-battery-compat/power_supply/battery/wakeup u:object_r:sysfs_wakeup:s0
+# The other power supplies' own wakeup directories. The platform lets
+# system_suspend search every sysfs directory and read sysfs_wakeup.
+genfscon sysfs /devices/platform/sec-battery-compat/power_supply/ac/wakeup u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/i2c-max77843/i2c-3/3-0066/max77843-fuelgauge/power_supply/max77843-fuelgauge/wakeup u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/i2c-max77843/i2c-3/3-0069/power_supply/max77843-charger/wakeup u:object_r:sysfs_wakeup:s0
