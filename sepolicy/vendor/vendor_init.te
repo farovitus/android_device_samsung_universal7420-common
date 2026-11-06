@@ -55,6 +55,8 @@ get_prop(vendor_init, vts_status_prop)
 # init.power.rc expands ${vendor.touch.*.input} in its writes.
 get_prop(vendor_init, vendor_touch_prop)
 
+# /vendor/build.prop sets ro.chipname with vendor_init's permissions.
+set_prop(vendor_init, vendor_chipname_prop)
 set_prop(vendor_init, vendor_nfc_prop)
 set_prop(vendor_init, vendor_audio_prop)
 set_prop(vendor_init, vendor_hwc_prop)

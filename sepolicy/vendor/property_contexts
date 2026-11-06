@@ -16,6 +16,9 @@ persist.vendor.dualCam.          u:object_r:vendor_camera_prop:s0
 persist.vendor.camera.           u:object_r:vendor_camera_prop:s0
 vendor.hal.camera.               u:object_r:vendor_camera_prop:s0
 
+# SoC name (vendor.prop). The fingerprint HAL reads it.
+ro.chipname                      u:object_r:vendor_chipname_prop:s0 exact string
+
 # HWC
 vendor.ddk.                      u:object_r:vendor_hwc_prop:s0
 debug.hwc.                       u:object_r:vendor_hwc_prop:s0

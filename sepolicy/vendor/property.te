@@ -17,6 +17,9 @@ vendor_internal_prop(vendor_touch_prop)
 vendor_restricted_prop(vendor_graphics_debug_prop)
 get_prop({ domain -isolated_app }, vendor_graphics_debug_prop)
 
+# SoC name from vendor.prop, read by the fingerprint HAL
+vendor_restricted_prop(vendor_chipname_prop)
+
 # Power HAL state
 vendor_internal_prop(vendor_powerhal_prop)
 
