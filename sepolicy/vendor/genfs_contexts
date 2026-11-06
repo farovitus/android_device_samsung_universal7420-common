@@ -99,6 +99,9 @@ genfscon sysfs /devices/14870000.pinctrl/gpio/gpio148       u:object_r:sysfs_lhd
 
 # MMC block device cache files
 genfscon sysfs /devices/virtual/bdi/254:0/read_ahead_kb     u:object_r:sysfs_block:s0
+# 6.6: the UFS data LUN's queue. init.rc limits discard_max_bytes through
+# /dev/sys/block/by-name/{userdata,rootdisk}, which resolve to sda.
+genfscon sysfs /devices/platform/15570000.ufs/host0/target0:0:0/0:0:0:0/block/sda/queue u:object_r:sysfs_block:s0
 
 # Modem
 genfscon sysfs /bus/platform/drivers/mif_sipc5              u:object_r:sysfs_modem:s0

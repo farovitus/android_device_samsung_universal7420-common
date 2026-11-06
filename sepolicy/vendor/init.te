@@ -54,6 +54,9 @@ allow init sysfs_wifi_writable:file { open write };
 allow init system_server:binder { call transfer };
 allow init vndbinder_device:chr_file { ioctl open read write };
 
+# init.rc writes queue/discard_max_bytes of the userdata disk.
+allow init sysfs_block:file w_file_perms;
+
 # Touchscreen and touchkey power-down: init.power.rc writes their
 # inhibited.
 allow init { sysfs_stmfts sysfs_sec_touchkey }:file w_file_perms;
