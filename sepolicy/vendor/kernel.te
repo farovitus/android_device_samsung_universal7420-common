@@ -16,3 +16,7 @@ allow kernel vendor_file:lnk_file read;
 allow kernel vendor_file:file r_file_perms;
 allow kernel vendor_configs_file:dir search;
 allow kernel vendor_configs_file:file r_file_perms;
+
+# The DMC driver's memlat sampler opens per-CPU PMU counters from a
+# kworker once the PMU has probed, after the policy is loaded.
+allow kernel self:perf_event cpu;
