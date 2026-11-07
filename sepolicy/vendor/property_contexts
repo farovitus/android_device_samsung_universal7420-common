@@ -38,6 +38,7 @@ vendor.powerhal.                 u:object_r:vendor_powerhal_prop:s0
 
 # NFC
 ro.debug_level                   u:object_r:vendor_nfc_prop:s0
+ro.nfc.port                      u:object_r:vendor_nfc_prop:s0 exact string
 persist.nfc.log.index            u:object_r:vendor_nfc_prop:s0
 vendor.nfc.fw.                   u:object_r:vendor_nfc_prop:s0 
 persist.vendor.nfc.log.index     u:object_r:vendor_nfc_prop:s0
