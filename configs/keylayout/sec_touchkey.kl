@@ -15,5 +15,6 @@
 #
 
 key 158   BACK	VIRTUAL
-key 254 APP_SWITCH     VIRTUAL
+# 6.6 cypress-mbr-touchkey reports KEY_APPSELECT
+key 580   APP_SWITCH	VIRTUAL
 
