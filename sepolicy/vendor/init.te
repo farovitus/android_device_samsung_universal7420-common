@@ -63,3 +63,11 @@ allow init sysfs_block:file w_file_perms;
 # Touchscreen and touchkey power-down: init.power.rc writes their
 # inhibited.
 allow init { sysfs_stmfts sysfs_sec_touchkey }:file w_file_perms;
+
+# wifi.rc and bootreceiver.rc write the enable files of tracefs instance
+# events. On 6.6 those files live in eventfs, which makes their dentries
+# only on lookup. An O_CREAT open of a name not yet in the dcache checks
+# create permission on the directory before the lookup finds the file, so
+# every first write logs a write denial on the directory although the
+# write itself succeeds. Do not grant directory write; only stop auditing it.
+dontaudit init { debugfs_wifi_tracing debugfs_bootreceiver_tracing }:dir write;
