@@ -17,3 +17,11 @@ allow hal_audio_default sysfs_earsmart:lnk_file read;
 wakelock_use(hal_audio_default)
 
 get_prop(hal_audio_default, vendor_audio_prop)
+
+# The proprietary libsecril-client.so in the audio HAL calls
+# acquire_wake_lock(). libhardware_legacy looks up the AIDL ISystemSuspend
+# through the process's service manager, which is vndservicemanager here
+# because the service runs on /dev/vndbinder. ISystemSuspend is never
+# registered there, so the lookup can only fail; granting it would make
+# AServiceManager_waitForService() wait forever instead. Stop auditing it.
+dontaudit hal_audio_default default_android_vndservice:service_manager find;
