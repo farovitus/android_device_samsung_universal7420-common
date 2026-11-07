@@ -16,8 +16,16 @@
     turns HP and "Headset Mic" on and off on insert and removal; the
     paths below set them again when they route there.
 
-    Voice and SCO paths are placeholders: the card has no modem or BT
-    link yet, so the HAL cannot open those PCMs.
+    Voice calls: the modem's PCM is on AIF2, a codec-to-codec link
+    ("WM1840 AIF2 Baseband") that powers when a path below routes AIF2;
+    the HAL's voice PCM open fails harmlessly. AIF2 runs on ASYNCCLK at
+    8 kHz (NB) or 16 kHz (WB), chosen by the card's "Voice Call Rate". ASRC1
+    crosses to SYSCLK sample rate 2 (8 kHz) or 3 (16 kHz), and ISRC2
+    converts to and from the 48 kHz SYSCLK rate 1 of the outputs and mics.
+    Downlink: AIF2RX1 > ASRC1IN2L > ISRC2INT1 > output, mixed with AIF1
+    so the AP's tones (local ringback, beeps) still play in a call.
+    Uplink: mic > ISRC2DEC1 > ASRC1IN1L > AIF2TX1/2.
+    SCO paths are placeholders: there is no BT link.
 -->
 <mixer>
     <!-- ########## Initial mixer settings ########## -->
@@ -42,6 +50,24 @@
     <!-- Capture sources -->
     <ctl name="AIF1TX1 Input 1" value="None" />
     <ctl name="AIF1TX2 Input 1" value="None" />
+
+    <!-- Voice: AIF2 to the modem, off until a voice path sets it -->
+    <ctl name="HPOUT1L Input 2" value="None" />
+    <ctl name="HPOUT1R Input 2" value="None" />
+    <ctl name="HPOUT3L Input 2" value="None" />
+    <ctl name="HPOUT3R Input 2" value="None" />
+    <ctl name="AIF4TX1 Input 2" value="None" />
+    <ctl name="AIF4TX2 Input 2" value="None" />
+    <ctl name="AIF2TX1 Input 1" value="None" />
+    <ctl name="AIF2TX2 Input 1" value="None" />
+    <ctl name="ASRC1IN1L Input 1" value="None" />
+    <ctl name="ASRC1IN2L Input 1" value="None" />
+    <ctl name="ISRC2INT1 Input 1" value="None" />
+    <ctl name="ISRC2DEC1 Input 1" value="None" />
+    <ctl name="ASRC1 Rate 1" value="SYNCCLK rate 2" />
+    <ctl name="ASRC1 Rate 2" value="ASYNCCLK rate 1" />
+    <ctl name="ISRC2 FSL" value="SYNCCLK rate 2" />
+    <ctl name="ISRC2 FSH" value="SYNCCLK rate 1" />
 
     <!-- Input modes: IN1 and IN3 are DMICs, IN2B the headset mic -->
     <ctl name="IN1 Mode" value="Digital" />
@@ -104,30 +130,71 @@
         <path name="headphones" />
     </path>
 
-    <!-- Voice calls: placeholders until the card has a modem link -->
+    <!-- ########## Voice calls (AIF2, see the header) ########## -->
+
+    <path name="voice-nb">
+        <ctl name="Voice Call Rate" value="NB" />
+        <ctl name="ASRC1 Rate 1" value="SYNCCLK rate 2" />
+        <ctl name="ISRC2 FSL" value="SYNCCLK rate 2" />
+    </path>
+
+    <path name="voice-wb">
+        <ctl name="Voice Call Rate" value="WB" />
+        <ctl name="ASRC1 Rate 1" value="SYNCCLK rate 3" />
+        <ctl name="ISRC2 FSL" value="SYNCCLK rate 3" />
+    </path>
+
+    <path name="voice-rx">
+        <ctl name="ASRC1IN2L Input 1" value="AIF2RX1" />
+        <ctl name="ISRC2INT1 Input 1" value="ASRC1IN2L" />
+    </path>
 
     <path name="voice-earpiece">
+        <path name="voice-nb" />
+        <path name="voice-rx" />
         <path name="earpiece" />
+        <ctl name="HPOUT3L Input 2" value="ISRC2INT1" />
+        <ctl name="HPOUT3R Input 2" value="ISRC2INT1" />
     </path>
 
     <path name="voice-earpiece-wb">
+        <path name="voice-wb" />
+        <path name="voice-rx" />
         <path name="earpiece" />
+        <ctl name="HPOUT3L Input 2" value="ISRC2INT1" />
+        <ctl name="HPOUT3R Input 2" value="ISRC2INT1" />
     </path>
 
     <path name="voice-speaker">
+        <path name="voice-nb" />
+        <path name="voice-rx" />
         <path name="speaker" />
+        <ctl name="AIF4TX1 Input 2" value="ISRC2INT1" />
+        <ctl name="AIF4TX2 Input 2" value="ISRC2INT1" />
     </path>
 
     <path name="voice-speaker-wb">
+        <path name="voice-wb" />
+        <path name="voice-rx" />
         <path name="speaker" />
+        <ctl name="AIF4TX1 Input 2" value="ISRC2INT1" />
+        <ctl name="AIF4TX2 Input 2" value="ISRC2INT1" />
     </path>
 
     <path name="voice-headphones">
+        <path name="voice-nb" />
+        <path name="voice-rx" />
         <path name="headphones" />
+        <ctl name="HPOUT1L Input 2" value="ISRC2INT1" />
+        <ctl name="HPOUT1R Input 2" value="ISRC2INT1" />
     </path>
 
     <path name="voice-headphones-wb">
+        <path name="voice-wb" />
+        <path name="voice-rx" />
         <path name="headphones" />
+        <ctl name="HPOUT1L Input 2" value="ISRC2INT1" />
+        <ctl name="HPOUT1R Input 2" value="ISRC2INT1" />
     </path>
 
     <!-- No BT or HDMI link on the card -->
@@ -178,31 +245,66 @@
     </path>
 
     <path name="voice-mic">
-        <path name="earpiece-mic" />
+        <ctl name="ISRC2DEC1 Input 1" value="IN1L" />
+        <ctl name="ASRC1IN1L Input 1" value="ISRC2DEC1" />
+        <ctl name="AIF2TX1 Input 1" value="ASRC1IN1L" />
+        <ctl name="AIF2TX2 Input 1" value="ASRC1IN1L" />
+        <ctl name="IN1L Digital Volume" value="140" />
+        <ctl name="Main Mic Switch" value="1" />
     </path>
 
     <path name="voice-earpiece-mic">
-        <path name="earpiece-mic" />
+        <ctl name="ISRC2DEC1 Input 1" value="IN1L" />
+        <ctl name="ASRC1IN1L Input 1" value="ISRC2DEC1" />
+        <ctl name="AIF2TX1 Input 1" value="ASRC1IN1L" />
+        <ctl name="AIF2TX2 Input 1" value="ASRC1IN1L" />
+        <ctl name="IN1L Digital Volume" value="140" />
+        <ctl name="Main Mic Switch" value="1" />
     </path>
 
     <path name="voice-earpiece-mic-wb">
-        <path name="earpiece-mic" />
+        <ctl name="ISRC2DEC1 Input 1" value="IN1L" />
+        <ctl name="ASRC1IN1L Input 1" value="ISRC2DEC1" />
+        <ctl name="AIF2TX1 Input 1" value="ASRC1IN1L" />
+        <ctl name="AIF2TX2 Input 1" value="ASRC1IN1L" />
+        <ctl name="IN1L Digital Volume" value="140" />
+        <ctl name="Main Mic Switch" value="1" />
     </path>
 
     <path name="voice-speaker-mic">
-        <path name="earpiece-mic" />
+        <ctl name="ISRC2DEC1 Input 1" value="IN3L" />
+        <ctl name="ASRC1IN1L Input 1" value="ISRC2DEC1" />
+        <ctl name="AIF2TX1 Input 1" value="ASRC1IN1L" />
+        <ctl name="AIF2TX2 Input 1" value="ASRC1IN1L" />
+        <ctl name="Sub Mic Switch" value="1" />
     </path>
 
     <path name="voice-speaker-mic-wb">
-        <path name="earpiece-mic" />
+        <ctl name="ISRC2DEC1 Input 1" value="IN3L" />
+        <ctl name="ASRC1IN1L Input 1" value="ISRC2DEC1" />
+        <ctl name="AIF2TX1 Input 1" value="ASRC1IN1L" />
+        <ctl name="AIF2TX2 Input 1" value="ASRC1IN1L" />
+        <ctl name="Sub Mic Switch" value="1" />
     </path>
 
     <path name="voice-headset-mic">
-        <path name="headset-mic" />
+        <ctl name="ISRC2DEC1 Input 1" value="IN2L" />
+        <ctl name="ASRC1IN1L Input 1" value="ISRC2DEC1" />
+        <ctl name="AIF2TX1 Input 1" value="ASRC1IN1L" />
+        <ctl name="AIF2TX2 Input 1" value="ASRC1IN1L" />
+        <ctl name="IN2L Volume" value="20" />
+        <ctl name="IN2L Digital Volume" value="140" />
+        <ctl name="Headset Mic Switch" value="1" />
     </path>
 
     <path name="voice-headset-mic-wb">
-        <path name="headset-mic" />
+        <ctl name="ISRC2DEC1 Input 1" value="IN2L" />
+        <ctl name="ASRC1IN1L Input 1" value="ISRC2DEC1" />
+        <ctl name="AIF2TX1 Input 1" value="ASRC1IN1L" />
+        <ctl name="AIF2TX2 Input 1" value="ASRC1IN1L" />
+        <ctl name="IN2L Volume" value="20" />
+        <ctl name="IN2L Digital Volume" value="140" />
+        <ctl name="Headset Mic Switch" value="1" />
     </path>
 
     <path name="voice-bt-sco-mic">
