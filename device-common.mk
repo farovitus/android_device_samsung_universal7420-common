@@ -81,10 +81,6 @@ TARGET_SCREEN_WIDTH := 1440
 # Mesa panfrost, minigbm and the KMS HWC for the 6.6 kernel
 $(call inherit-product, vendor/nk/gfx/nk_gfx.mk)
 
-# BSP
-PRODUCT_PACKAGES += \
-	libhwc2on1adapter
-
 # Camera
 ifeq ($(NK_HAS_CAMERA),true)
 PRODUCT_PACKAGES += \
