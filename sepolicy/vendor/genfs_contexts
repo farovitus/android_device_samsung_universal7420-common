@@ -59,6 +59,9 @@ genfscon sysfs /module/cpuidle_exynos64/parameters/enable_mask      u:object_r:s
 
 genfscon sysfs /module/workqueue/parameters/power_efficient         u:object_r:sysfs_devices_system_cpu:s0
 
+# DECON TE state, read by the KMS HWC to pick its vsync source
+genfscon sysfs /module/exynosdrm/parameters                        u:object_r:sysfs_graphics:s0
+
 genfscon sysfs /power/ipa                                           u:object_r:sysfs_devices_system_cpu:s0
 genfscon sysfs /firmware/devicetree/base/ipa_pdata                  u:object_r:sysfs_devices_system_cpu:s0
 
