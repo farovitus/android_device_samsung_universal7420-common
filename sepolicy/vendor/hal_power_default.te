@@ -34,3 +34,13 @@ set_prop(hal_power_default, vendor_touch_prop)
 
 # Hint state properties (vendor.powerhal.state, .audio, .rendering).
 set_prop(hal_power_default, vendor_powerhal_prop)
+
+# ADPF hint sessions set uclamp.min on the session threads with
+# sched_setattr(): HWUI render threads of apps, SurfaceFlinger,
+# system_server and the composer. App threads carry MLS categories, and
+# the MLS constraints on getsched/setsched only pass for a trusted
+# subject, as on Pixel.
+typeattribute hal_power_default mlstrustedsubject;
+allow hal_power_default self:capability sys_nice;
+allow hal_power_default appdomain:process { getsched setsched };
+allow hal_power_default { surfaceflinger system_server hal_graphics_composer_default }:process setsched;
