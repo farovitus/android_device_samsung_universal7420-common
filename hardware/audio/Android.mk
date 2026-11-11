@@ -40,13 +40,13 @@ LOCAL_SHARED_LIBRARIES := \
 	libdl \
 	libsecril-client
 
+LOCAL_HEADER_LIBRARIES := ril_headers
 
 LOCAL_C_INCLUDES += \
 	$(LOCAL_PATH)/include \
 	external/tinyalsa/include \
 	external/tinycompress/include \
 	hardware/libhardware/include \
-	hardware/samsung/ril/libsecril-client \
 	$(call include-path-for, audio-utils) \
 	$(call include-path-for, audio-route) \
 	$(call include-path-for, audio-effects)
