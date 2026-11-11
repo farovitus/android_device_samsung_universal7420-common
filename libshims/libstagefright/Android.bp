@@ -16,6 +16,11 @@ cc_library_shared {
         "android.hardware.graphics.bufferqueue@2.0_genc++_headers",
     ],
 
+    header_libs: [
+        "libstagefright_foundation_headers",
+        "media_plugin_headers",
+    ],
+
     shared_libs: [
         "android.hardware.graphics.bufferqueue@1.0",
         "android.hardware.graphics.bufferqueue@2.0",
@@ -34,6 +39,5 @@ cc_library_shared {
         "frameworks/native/libs/nativewindow/include",
         "frameworks/av/media/ndk/include",
         "frameworks/av/media/libstagefright/include",
-        "frameworks/av/media/libstagefright/foundation/include",
     ],
 }
