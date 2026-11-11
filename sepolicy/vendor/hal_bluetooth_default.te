@@ -1,7 +1,16 @@
 #  hal_bluetooth_default.te
+#
+# The AOSP AIDL Bluetooth HAL (android.hardware.bluetooth-service.default)
+# takes hci0 over an HCI_CHANNEL_USER socket; the NK 6.6 kernel brings
+# the BCM4358 up through hci_bcm. net_admin, sys_nice and sysfs reads
+# come from the AOSP hal_bluetooth rules.
 
 # /efs
 allow hal_bluetooth_default efs_file:dir search;
 r_dir_file(hal_bluetooth_default, bluetooth_efs_file)
 
 allow hal_bluetooth_default vendor_firmware_file:dir r_dir_perms;
+
+# The HAL's rfkill toggle is not needed: the hci0 rfkill starts
+# unblocked, and the HAL carries on when the write fails.
+dontaudit hal_bluetooth_default sysfs:file { write open };
