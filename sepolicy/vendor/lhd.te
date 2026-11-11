@@ -30,3 +30,9 @@ dontaudit lhd system_data_file:dir search;
 # common policy grants only the sock_file write. net_domain() is the
 # AOSP grant for a domain that uses inet sockets and covers both sides.
 net_domain(lhd)
+
+# acquire_wake_lock() in libhardware_legacy looks up the AIDL
+# ISystemSuspend through servicemanager on /dev/binder. The common policy
+# grants only the old HIDL path, so the lookup is denied at lhd's start
+# and every lhd wake lock silently fails.
+wakelock_use(lhd)
