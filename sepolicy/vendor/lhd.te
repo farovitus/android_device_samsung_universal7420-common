@@ -23,3 +23,10 @@ allow lhd gps_data_file:file create_file_perms;
 allow lhd gps_data_file:fifo_file create_file_perms;
 
 dontaudit lhd system_data_file:dir search;
+
+# lhd opens inet sockets. bionic's connect() hands each one to netd's
+# fwmarkd to mark it, so lhd needs the connect and netd needs to use the
+# socket lhd passes (fd use, tcp_socket read/write/getopt/setopt). The
+# common policy grants only the sock_file write. net_domain() is the
+# AOSP grant for a domain that uses inet sockets and covers both sides.
+net_domain(lhd)
