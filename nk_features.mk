@@ -23,3 +23,9 @@ NK_HAS_SEC_TOUCH ?= false
 # device (max77693-haptic), so it uses the input-FF HAL in
 # hardware/vibrator, not Samsung's timed_output one.
 NK_HAS_VIBRATOR ?= true
+# IR blaster: the S6 has one, but the 6.6 kernel has no driver for it yet.
+NK_HAS_IR ?= false
+# mDNIe screen modes (LiveDisplay, AdvancedDisplay) drive Samsung's mdnie
+# sysfs class. The 6.6 DRM panel driver has no mDNIe control, so their
+# settings would change nothing; colour transforms belong in the HWC.
+NK_HAS_MDNIE ?= false
