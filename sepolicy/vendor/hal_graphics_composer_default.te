@@ -17,3 +17,9 @@ allow hal_graphics_composer_default self:netlink_kobject_uevent_socket { bind cr
 vndbinder_use(hal_graphics_composer_default);
 
 get_prop(hal_graphics_composer_default, vendor_hwc_prop)
+
+# The composer runs on /dev/vndbinder, so libui's probe for the AIDL
+# IAllocator goes to vndservicemanager. This device has only the HIDL
+# allocator and IAllocator/default is registered nowhere; the lookup can
+# only fail, and the HWC falls back to HIDL. Stop auditing it.
+dontaudit hal_graphics_composer_default default_android_vndservice:service_manager find;
