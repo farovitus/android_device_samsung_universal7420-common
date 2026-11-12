@@ -1,0 +1,73 @@
+From d6c5a8e27e607487cd2a6ead857a73fe2f0ef754 Mon Sep 17 00:00:00 2001
+From: FAROVITUS <farovitus@gmail.com>
+Date: Thu, 12 Nov 2026 13:40:24 +0200
+Subject: [PATCH] uicc: fall back to the SIM records ICCID when the card status
+ has none
+
+Legacy HIDL RILs (a radio 1.4 libril on top of a RIL_CardStatus_v6
+vendor RIL, as on the Galaxy S6) send an empty ICCID in the card status
+and do not support getSimSlotsStatus. UiccSlot and UiccPort store the
+empty string. UiccPort.getIccId() falls back to the ICCID read from
+EF_ICCID only when the stored value is null, so SubscriptionManagerService
+sees "" and logs "No ICCID available for phone 0". The SIM loads, but no
+subscription is mapped to the slot: the allowed network types are never
+sent, and the modem stays NOT_REG_MT_NOT_SEARCHING_OP (emergency calls
+only).
+
+Treat an empty card status ICCID like a missing one. UiccPort returns
+the SIM records ICCID, and UiccSlot.getIccId() asks the port, so the
+inserted-SIM list also sees the card.
+
+Signed-off-by: FAROVITUS <farovitus@gmail.com>
+---
+ .../android/internal/telephony/uicc/UiccPort.java    |  3 ++-
+ .../android/internal/telephony/uicc/UiccSlot.java    | 12 +++++++++++-
+ 2 files changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/src/java/com/android/internal/telephony/uicc/UiccPort.java b/src/java/com/android/internal/telephony/uicc/UiccPort.java
+index 8118a12..c823fe8 100644
+--- a/src/java/com/android/internal/telephony/uicc/UiccPort.java
++++ b/src/java/com/android/internal/telephony/uicc/UiccPort.java
+@@ -22,6 +22,7 @@ import android.os.IBinder;
+ import android.os.Message;
+ import android.os.RemoteException;
+ import android.telephony.SubscriptionInfo;
++import android.text.TextUtils;
+ import android.util.IndentingPrintWriter;
+ 
+ import com.android.internal.annotations.GuardedBy;
+@@ -358,7 +359,7 @@ public class UiccPort {
+      * Return the IccId corresponding to the port.
+      */
+     public String getIccId() {
+-        if (mIccid != null) {
++        if (!TextUtils.isEmpty(mIccid)) {
+             return mIccid;
+         } else if (mUiccProfile != null) {
+             return mUiccProfile.getIccId();
+diff --git a/src/java/com/android/internal/telephony/uicc/UiccSlot.java b/src/java/com/android/internal/telephony/uicc/UiccSlot.java
+index d986c93..3b890d5 100644
+--- a/src/java/com/android/internal/telephony/uicc/UiccSlot.java
++++ b/src/java/com/android/internal/telephony/uicc/UiccSlot.java
+@@ -495,7 +495,17 @@ public class UiccSlot extends Handler {
+      *  Use this API to get the iccId of the inactive port only.
+      */
+     public String getIccId(int portIdx) {
+-        return mIccIds.get(portIdx);
++        String iccId = mIccIds.get(portIdx);
++        if (TextUtils.isEmpty(iccId)) {
++            // Legacy RILs send no ICCID in the card status; use the one the
++            // port read from the SIM records instead.
++            UiccCard card = getUiccCard();
++            UiccPort port = (card == null) ? null : card.getUiccPort(portIdx);
++            if (port != null) {
++                iccId = port.getIccId();
++            }
++        }
++        return iccId;
+     }
+ 
+     public String getEid() {
+-- 
+2.54.0 (Apple Git-157)
+
