@@ -4,8 +4,8 @@ on post-fs
 
 on post-fs-data
     # mobicore
-    mkdir /data/app/mcRegistry 0775 system system
-    mkdir /data/app/mcRegistry/TbStorage 0700 system system
+    mkdir /data/misc/mcRegistry 0775 system system
+    mkdir /data/misc/mcRegistry/TbStorage 0700 system system
     mkdir /efs/TEE  0770 radio system
 
     # mobicore
