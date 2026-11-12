@@ -16,10 +16,17 @@ service ril-daemon /vendor/bin/hw/rild -l ${vendor.sec.rild.libpath}
     socket sap_uim_socket1 stream 660 bluetooth bluetooth
     onrestart restart cpboot-daemon
 
+# The second RIL serves the second SIM slot only. libinit sets the slot
+# count during property init, so start it on dual-SIM boards alone instead
+# of with class main on every board.
 service ril-daemon1 /vendor/bin/hw/rild -c 2 -l ${vendor.sec.rild.libpath2}
     override
     class main
+    disabled
     user radio
     group radio cache inet misc audio sdcard_r sdcard_rw log vpn system readproc wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW SYS_ADMIN CHOWN SYS_TIME
     onrestart restart cpboot-daemon
+
+on boot && property:ro.vendor.multisim.simslotcount=2
+    start ril-daemon1
