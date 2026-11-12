@@ -5,7 +5,6 @@
 /(vendor|system/vendor)/bin/sensorhubservice  u:object_r:sensorhubservice_exec:s0
 
 # files in /system
-/system/bin/lpm                               u:object_r:charger_exec:s0
 /system/bin/move_widevine_data\.sh            u:object_r:move-widevine-data-sh_exec:s0
 
 ####################################

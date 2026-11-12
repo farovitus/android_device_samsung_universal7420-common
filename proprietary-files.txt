@@ -108,28 +108,6 @@ vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
 vendor/lib/libwvhidl.so
 vendor/lib/mediadrm/libwvdrmengine.so
 
-# LPM - from N975FXXU6ETLL
-bin/lpm|7a1e0b9854b6259e88cc74ab1e7f0c6b3a3827ab
-lib64/libmaet.so|ec9939dbe9576a9ab3c27c0300d82809ab630cc1
-lib64/libsxqk_skia.so|3ff0105b643964f4da14ed18c071a76b5868ae7c
-
-# LPM
-media/battery_error.spi
-media/battery_low.spi
-media/battery_temperature_error.spi
-media/battery_temperature_limit.spi
-media/battery_water_usb.spi
-media/charging_New_Fast.spi
-media/charging_New_Normal.spi
-media/dock_error_usb.spi
-media/incomplete_connect.spi
-media/lcd_density.txt
-media/percentage.spi
-media/safety_timer_usb.spi
-media/slow_charging_usb.spi
-media/temperature_limit_usb.spi
-media/water_protection_usb.spi
-
 # Protobuf vendor variant - from N975FXXU6ZTK6
 vendor/lib/libprotobuf-cpp-full-3.9.1.so|4290c27525874cb687d072dcfe20244e65685f2a
 vendor/lib64/libprotobuf-cpp-full-3.9.1.so|b9613d7b25ffd6ab31f7aa32a904aa6f5f4f9cdf
