@@ -16,7 +16,7 @@
 
 # VOLD
 /dev/block/platform/15570000.ufs/by-name/HIDDEN           /preload    ext4      defaults                                                                                                       voldmanaged=preload:auto
-/devices/15400000.usb/15400000.dwc3/xhci-hcd.2.auto/usb*  auto        auto      defaults                                                                                                       voldmanaged=usb:auto
+/devices/platform/soc@0/15400000.usb/15400000.usb/xhci-hcd.*.auto/usb*  auto        auto      defaults                                                                                                       voldmanaged=usb:auto
 
 # ZRAM
 /dev/block/zram0                                          none        swap      defaults,discard                                                                                               zramsize=2147483648
