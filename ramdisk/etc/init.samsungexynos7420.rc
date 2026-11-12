@@ -64,7 +64,6 @@ on late-fs
     mount_all /vendor/etc/fstab.samsungexynos7420 --late
     
 on post-fs-data
-    mkdir /data/media 0770 media_rw media_rw
     setprop vold.post_fs_data_done 1
     
     # [ SEC_SELINUX_PORTING_COMMON
