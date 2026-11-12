@@ -342,12 +342,6 @@ PRODUCT_PACKAGES += \
 	init.touch.sh \
 	ueventd.samsungexynos7420.rc
 
-# RCS
-PRODUCT_PACKAGES += \
-	com.android.ims.rcsmanager \
-	PresencePolling \
-	RcsService
-
 # RenderScript
 PRODUCT_PACKAGES += \
 	android.hardware.renderscript@1.0-impl
