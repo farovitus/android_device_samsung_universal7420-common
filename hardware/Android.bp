@@ -1,5 +1,4 @@
 subdirs = [
     "livedisplay",
-    "atrace",
     "nfc",
 ]

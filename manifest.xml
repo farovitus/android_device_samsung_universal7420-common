@@ -29,15 +29,6 @@
     <hal format="hidl">
         <name>android.hardware.drm</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ICryptoFactory</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IDrmFactory</name>
-            <instance>default</instance>
-        </interface>
         <fqname>@1.1::ICryptoFactory/widevine</fqname>
         <fqname>@1.1::IDrmFactory/widevine</fqname>
     </hal>
@@ -87,15 +78,6 @@
         <version>3.0</version>
         <interface>
             <name>IKeymasterDevice</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.renderscript</name>
-        <transport arch="32+64">passthrough</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IDevice</name>
             <instance>default</instance>
         </interface>
     </hal>

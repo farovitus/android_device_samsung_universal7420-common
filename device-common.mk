@@ -36,10 +36,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	AdvancedDisplay
 
-# Atrace HAL
-PRODUCT_PACKAGES += \
-	android.hardware.atrace@1.0-service.universal7420
-
 # Audio
 PRODUCT_PACKAGES += \
 	audio.primary.universal7420_32 \
@@ -120,8 +116,6 @@ PRODUCT_COPY_FILES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-	android.hardware.drm@1.0-impl \
-	android.hardware.drm@1.0-service \
 	android.hardware.drm-service.clearkey
 
 # DTB
@@ -341,10 +335,6 @@ PRODUCT_PACKAGES += \
 	init.baseband.rc \
 	init.touch.sh \
 	ueventd.samsungexynos7420.rc
-
-# RenderScript
-PRODUCT_PACKAGES += \
-	android.hardware.renderscript@1.0-impl
 
 # SamsungDoze
 PRODUCT_PACKAGES += \
