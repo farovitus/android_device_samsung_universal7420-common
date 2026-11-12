@@ -21,3 +21,7 @@ ro.nfc.fw_dl_on_boot=false
 
 # Recovery
 persist.vendor.recovery_update=false
+
+# Board. ro.arch is platform-owned (build_prop), so init refuses it
+# from vendor properties.
+ro.arch=exynos7420

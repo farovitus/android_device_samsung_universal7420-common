@@ -26,7 +26,6 @@ bluetooth.profile.sap.server.enabled?=true
 
 # Board
 ro.chipname=exynos7420
-ro.arch=exynos7420
 
 # Fingerprint HAL
 ro.vendor.fingerprint.type=home
