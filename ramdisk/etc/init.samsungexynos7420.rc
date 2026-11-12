@@ -11,7 +11,6 @@ on early-init
     write /proc/sys/vm/swappiness 100
 
 on init
-    start watchdogd
     # RT tasks default to uclamp.min 1024, so each RT wakeup drives
     # schedutil to the top OPP. Let RT load set the frequency instead.
     write /proc/sys/kernel/sched_util_clamp_min_rt_default 0
@@ -588,11 +587,6 @@ on shutdown
     # Fix permissions then store the current batt_capacity_max value in the EFS partition
     chmod 600 /sys/class/power_supply/battery/batt_capacity_max
     copy /sys/class/power_supply/battery/batt_capacity_max /efs/Battery/prev_batt_capacity_max
-
-# Set watchdog timer to 30 seconds and pet it every 10 seconds to get a 20 second margin
-service watchdogd /sbin/watchdogd 10 20
-    class core
-    seclabel u:r:watchdogd:s0
 
 on property:sys.boot_completed=1
     # Enable swap
