@@ -120,9 +120,8 @@
 /sys/devices/virtual/earsmart(/.*)?              u:object_r:sysfs_earsmart:s0
 
 # Block/Storage
-/sys/devices/[a-f0-9]+\.ufs/host0/power(/.*)?                                 u:object_r:sysfs_mmc:s0
-/sys/devices/[a-f0-9]+\.ufs/host0/target0:0:0/0:0:0:0/block/sda/queue(/.*)?   u:object_r:sysfs_io_sched_tuneable:s0
-/sys/devices/[0-9]+\.dwmmc[0-9]+/mmc_host/mmc[0-9]+/mmc[0-9]+:[a-z]+/block/mmcblk[0-9]+/queue(/.*)? u:object_r:sysfs_io_sched_tuneable:s0
+/sys/devices/platform/soc@0/15570000\.ufs/host0/power(/.*)?                                       u:object_r:sysfs_mmc:s0
+/sys/devices/platform/soc@0/15570000\.ufs/host0/target0:0:0/0:0:0:0/block/sd[a-z]/queue(/.*)?   u:object_r:sysfs_io_sched_tuneable:s0
 
 # Bluetooth
 /sys/devices/bluetooth.[0-9]+/rfkill/rfkill0/state  u:object_r:sysfs_bluetooth_writable:s0
@@ -137,10 +136,6 @@
 /sys/firmware/devicetree/base/model_info-system_rev    u:object_r:sysfs_socinfo:s0
 
 # DevFreq
-/sys/devices/platform/exynos7-devfreq-int/devfreq/exynos7-devfreq-int(/.*)?     u:object_r:sysfs_devfreq:s0
-/sys/devices/platform/exynos7-devfreq-disp/devfreq/exynos7-devfreq-disp(/.*)?   u:object_r:sysfs_devfreq:s0
-/sys/devices/platform/exynos7-devfreq-mif/devfreq/exynos7-devfreq-mif(/.*)?     u:object_r:sysfs_devfreq:s0
-/sys/devices/platform/exynos7-devfreq-isp/devfreq/exynos7-devfreq-isp(/.*)?     u:object_r:sysfs_devfreq:s0
 /sys/devices/platform/soc@0/14ac0000\.gpu/devfreq/14ac0000\.gpu(/.*)?          u:object_r:sysfs_devfreq:s0
 
 # Fingerprint
@@ -151,9 +146,6 @@
 
 # Grip
 /sys/class/sensors/grip_sensor(/.*)?                 u:object_r:sysfs_grip:s0
-
-# GPU
-/sys/devices/[a-f0-9]+\.mali(/.*)?                  u:object_r:sysfs_mali:s0
 
 # HMT relay mode node
 /sys/devices/virtual/relay_on                       u:object_r:sysfs_hmt:s0
