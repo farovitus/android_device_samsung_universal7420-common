@@ -232,3 +232,6 @@ genfscon sysfs /devices/platform/soc@0/11460000.serial/serial0/serial0-0/wakeup 
 # The BCM4773 bridge's wakeup source, inside the SPI1 tree that is
 # otherwise sysfs_ssp_iio.
 genfscon sysfs /devices/platform/soc@0/14d30000.spi/spi_master/spi1/spi1.0/wakeup u:object_r:sysfs_wakeup:s0
+# The MAX77843 MUIC's extcon device and its cable.N entries, read by
+# WiredAccessoryManager.
+genfscon sysfs /devices/platform/i2c-max77843/i2c-3/3-0066/max77843-muic/extcon u:object_r:sysfs_extcon:s0
