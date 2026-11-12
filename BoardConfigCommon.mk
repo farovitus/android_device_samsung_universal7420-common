@@ -49,6 +49,9 @@ AUDIOSERVER_MULTILIB := 32
 BOARD_HAVE_BLUETOOTH := true
 
 # Bootloader
+# Android 15 defaults AB_OTA_UPDATER to true; this device is non-A/B.
+AB_OTA_UPDATER := false
+
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
