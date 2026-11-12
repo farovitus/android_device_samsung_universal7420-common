@@ -67,3 +67,9 @@ on property:vendor.touch.inhibit=1 && property:vendor.touch.touchkey.input=*
 
 on property:vendor.touch.inhibit=0 && property:vendor.touch.touchkey.input=*
     write /sys/class/input/${vendor.touch.touchkey.input}/inhibited 0
+
+# Pixel's power HAL waits for vendor.powerhal.init before it starts its
+# looper and applies powerhint.json; Pixel devices set it from their own
+# init rc once boot has completed.
+on property:sys.boot_completed=1
+    setprop vendor.powerhal.init 1
