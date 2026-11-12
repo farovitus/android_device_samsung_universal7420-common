@@ -176,11 +176,10 @@ PRODUCT_PACKAGES += \
 	android.hardware.graphics.composer@2.1-service \
 	android.hardware.graphics.mapper@2.0-impl-2.1
 
-# Health
+# Health: the AIDL service also runs charger mode (vendor.charger)
 PRODUCT_PACKAGES += \
-	android.hardware.health@2.1-impl \
-	android.hardware.health@2.1-impl.recovery \
-	android.hardware.health@2.1-service
+	android.hardware.health-service.samsung \
+	android.hardware.health-service.samsung-recovery
 
 # Hung-task detector: the system init.rc sets hung_task_timeout_secs to 0
 # and llkd.rc restores it only when ro.khungtask.enable is true. With it,
