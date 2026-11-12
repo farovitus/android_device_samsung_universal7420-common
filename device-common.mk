@@ -77,12 +77,11 @@ TARGET_SCREEN_WIDTH := 1440
 # Mesa panfrost, minigbm and the KMS HWC for the 6.6 kernel
 $(call inherit-product, vendor/nk/gfx/nk_gfx.mk)
 
-# Camera
+# Camera: on 6.6 a libcamera HAL3 module behind the legacy provider
+# (kernel_out/bringup/camera/DESIGN.md), not Samsung's fimc-is HAL.
 ifeq ($(NK_HAS_CAMERA),true)
 PRODUCT_PACKAGES += \
-	camera.exynos5 \
 	android.hardware.camera.provider@2.5-service \
-	libexynoscamera_shim \
 	libion
 
 PRODUCT_COPY_FILES += \

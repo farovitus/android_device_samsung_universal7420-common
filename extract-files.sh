@@ -81,9 +81,5 @@ sed -i "s/SSLv3_client_method/SSLv23_method\x00\x00\x00\x00\x00\x00/" $BLOB_ROOT
 # Replace libutils with libutils-v32
 "${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/bin/hw/gpsd
 "${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/bin/hw/lhd
-"${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/lib/libexynoscamera.so
-"${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/lib/libexynoscamera3.so
-"${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/lib64/libexynoscamera.so
-"${PATCHELF}" --replace-needed libutils.so libutils-v32.so $BLOB_ROOT/vendor/lib64/libexynoscamera3.so
 
 "${MY_DIR}/setup-makefiles.sh"

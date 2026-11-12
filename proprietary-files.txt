@@ -54,18 +54,6 @@ vendor/firmware/bcm4359B1_V0105.0106_wisol.hcd
 # Prebuilt libaudioroute.so to work around https://android.googlesource.com/platform/system/media/+/fbbc93cb34e36b2b28e2e440e9f5e0c4d1472b8d
 lib/libaudioroute.so|46fcafe8de5c4fe078ad9e9e613bc260fd137106
 
-# Camera
-lib/hw/camera.exynos5.so:vendor/lib/hw/camera.vendor.exynos5.so
-lib64/hw/camera.exynos5.so:vendor/lib64/hw/camera.vendor.exynos5.so
-lib/libexynoscamera.so:vendor/lib/libexynoscamera.so
-lib64/libexynoscamera.so:vendor/lib64/libexynoscamera.so
-lib/libexynoscamera3.so:vendor/lib/libexynoscamera3.so
-lib64/libexynoscamera3.so:vendor/lib64/libexynoscamera3.so
-lib/libhwjpeg.so:vendor/lib/libhwjpeg.so
-lib64/libhwjpeg.so:vendor/lib64/libhwjpeg.so
-lib/libuniplugin.so:vendor/lib/libuniplugin.so
-lib64/libuniplugin.so:vendor/lib64/libuniplugin.so
-
 # Seiren Audio Firmware
 vendor/firmware/seiren_fw_dram.bin
 vendor/firmware/seiren_fw_sram.bin
