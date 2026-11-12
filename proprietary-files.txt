@@ -17,29 +17,6 @@ etc/firmware/clearwatera-dsp4-rx-anc-nb.wmfw
 etc/firmware/clearwatera-dsp4-rx-anc-wb.wmfw
 etc/firmware/clearwatera-dsp5-dsm.wmfw
 etc/firmware/clearwatera-dsp6-ez2-control.wmfw
-etc/firmware/florida-dsp1-edac.bin
-etc/firmware/florida-dsp1-edac.wmfw
-etc/firmware/florida-dsp2-tx-fb-meeting.bin
-etc/firmware/florida-dsp2-tx-fb-meeting.wmfw
-etc/firmware/florida-dsp2-tx-nb.wmfw
-etc/firmware/florida-dsp2-tx-swb.wmfw
-etc/firmware/florida-dsp2-tx-wb.wmfw
-etc/firmware/florida-dsp3-ez2-control.wmfw
-etc/firmware/florida-dsp3-lpsd-control.bin
-etc/firmware/florida-dsp3-tx-nb.bin
-etc/firmware/florida-dsp3-tx-nb.wmfw
-etc/firmware/florida-dsp3-tx-swb-conversation.bin
-etc/firmware/florida-dsp3-tx-swb-interview.bin
-etc/firmware/florida-dsp3-tx-swb.wmfw
-etc/firmware/florida-dsp3-tx-wb-meeting.bin
-etc/firmware/florida-dsp3-tx-wb-meeting.wmfw
-etc/firmware/florida-dsp3-tx-wb.bin
-etc/firmware/florida-dsp3-tx-wb.wmfw
-etc/firmware/florida-dsp4-dsm.wmfw
-etc/firmware/florida-dsp4-rx-anc-nb.bin
-etc/firmware/florida-dsp4-rx-anc-nb.wmfw
-etc/firmware/florida-dsp4-rx-anc-wb.bin
-etc/firmware/florida-dsp4-rx-anc-wb.wmfw
 
 # Bluetooth - G920FXXS6ETK1 (N)
 vendor/firmware/bcm4358A3_V0083.0138.hcd|e3f2205f0afa2d269f1bad80e27806919c3f39f4
@@ -47,9 +24,6 @@ vendor/firmware/bcm4358A3_V0083.0138.hcd:vendor/firmware/bcm4358A3_V0083.0138_mu
 vendor/firmware/bcm4358A3_V0083.0138.hcd:vendor/firmware/bcm4358A3_V0083.0138_semco.hcd|e3f2205f0afa2d269f1bad80e27806919c3f39f4
 vendor/firmware/bcm4358A3_V0083.0138.hcd:vendor/firmware/bcm4358A3_V0083.0138_semco3rd.hcd|e3f2205f0afa2d269f1bad80e27806919c3f39f4
 vendor/firmware/bcm4358A3_V0083.0138_wisol.hcd|e3f2205f0afa2d269f1bad80e27806919c3f39f4
-vendor/firmware/bcm4359B0_V0019.0000.hcd
-vendor/firmware/bcm4359B1_V0105.0106.hcd
-vendor/firmware/bcm4359B1_V0105.0106_wisol.hcd
 
 # Prebuilt libaudioroute.so to work around https://android.googlesource.com/platform/system/media/+/fbbc93cb34e36b2b28e2e440e9f5e0c4d1472b8d
 lib/libaudioroute.so|46fcafe8de5c4fe078ad9e9e613bc260fd137106
@@ -155,4 +129,3 @@ vendor/etc/plmn_delta_usagsm.bin
 vendor/etc/plmn_se13.bin
 
 # WiFi
-vendor/bin/hw/mfgloader
