@@ -89,6 +89,13 @@
     <ctl name="IN1L HPF Switch" value="1" />
     <ctl name="IN3L HPF Switch" value="1" />
 
+    <!--
+        Input volume ramp, as stock. A DMIC starts with a DC step that the
+        10 Hz HPF takes about 70 ms to remove; at 1 ms/6 dB it reached the
+        output at full scale, a thump at the start of every recording.
+    -->
+    <ctl name="Input Ramp Up" value="8ms/6dB" />
+
     <!-- Input levels. 128 is 0 dB, in 0.5 dB steps. -->
     <ctl name="IN1L Digital Volume" value="128" />
     <ctl name="IN3L Digital Volume" value="128" />
@@ -217,11 +224,16 @@
 
     <!-- ########## Capture ########## -->
 
-    <!-- Main (bottom) mic in both capture channels, +6 dB as stock -->
+    <!--
+        Main (bottom) mic in both capture channels, as stock's recording
+        path. +10 dB: hand-held speech peaked about -21 dBFS at +6 dB and
+        -15 dBFS at +15 dB; the maintainer chose +10. Stock's own recorder
+        used +12 to +13 dB plus Samsung's processing.
+    -->
     <path name="earpiece-mic">
         <ctl name="AIF1TX1 Input 1" value="IN1L" />
         <ctl name="AIF1TX2 Input 1" value="IN1L" />
-        <ctl name="IN1L Digital Volume" value="140" />
+        <ctl name="IN1L Digital Volume" value="148" />
         <ctl name="Main Mic Switch" value="1" />
     </path>
 
