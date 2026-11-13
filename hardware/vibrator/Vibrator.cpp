@@ -199,16 +199,18 @@ ndk::ScopedAStatus Vibrator::perform(Effect effect, EffectStrength strength,
             return unsupported();
     }
 
+    // Stock TouchWiz touch feedback levels 2, 3 (its default) and 4:
+    // 49%, 65% and 82% of the drive range.
     uint16_t magnitude;
     switch (strength) {
         case EffectStrength::LIGHT:
-            magnitude = UINT16_MAX / 2;
+            magnitude = UINT16_MAX * 49 / 100;
             break;
         case EffectStrength::MEDIUM:
-            magnitude = UINT16_MAX / 4 * 3;
+            magnitude = UINT16_MAX * 65 / 100;
             break;
         case EffectStrength::STRONG:
-            magnitude = UINT16_MAX;
+            magnitude = UINT16_MAX * 82 / 100;
             break;
         default:
             return unsupported();
