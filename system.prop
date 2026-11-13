@@ -13,6 +13,11 @@ debug.sf.predict_hwc_composition_strategy=0
 debug.sf.enable_adpf_cpu_hint=true
 debug.hwui.use_hint_manager=true
 
+# Media. No IOmx service is declared, so the default Codec2 input surface
+# comes back null and CCodec::createInputSurface() crashes (screenrecord,
+# PCMark Video Editing, any surface-fed encoder). -1 avoids that path.
+debug.stagefright.c2inputsurface=-1
+
 # LMKD
 ro.lmk.log_stats=true
 
