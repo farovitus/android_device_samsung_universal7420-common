@@ -223,6 +223,13 @@
          players. -->
     <integer name="config_safe_media_volume_index">17</integer>
 
+    <!-- Ring and notification volume steps: 15, as stock TouchWiz (AOSP 7).
+         Defaults keep AOSP's 5 of 7 position. -->
+    <integer name="config_audio_ring_vol_steps">15</integer>
+    <integer name="config_audio_ring_vol_default">11</integer>
+    <integer name="config_audio_notif_vol_steps">15</integer>
+    <integer name="config_audio_notif_vol_default">11</integer>
+
     <!-- Configure mobile tcp buffer sizes in the form:
          rat-name:rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max
          If no value is found for the rat-name in use, the system default will be applied.

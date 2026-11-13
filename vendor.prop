@@ -1,6 +1,8 @@
 # Audio
 ro.vendor.audio_hal.force_voice_config=wide
+ro.config.alarm_vol_steps=15
 ro.config.media_vol_steps=25
+ro.config.system_vol_steps=15
 ro.config.vc_call_vol_steps=7
 
 # Bluetooth
