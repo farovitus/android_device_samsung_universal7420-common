@@ -422,4 +422,11 @@ Add a comment to this line
     <!-- The 6.6 kernel reports the headset jack as SW_HEADPHONE_INSERT and
          SW_MICROPHONE_INSERT input events; there is no h2w switch device. -->
     <bool name="config_useDevInputEventForAudioJack">true</bool>
+
+    <!-- Default vibration strength (1-255). Stock TouchWiz defaults calls and
+         notifications to level 3 of 5, 60% of the motor's drive range; 153
+         puts the Medium setting there. Low then gives about 43% (stock
+         level 2) and High about 72%. At 255, Medium was stock's maximum and
+         High could not go above it. -->
+    <integer name="config_defaultVibrationAmplitude">153</integer>
 </resources>
