@@ -33,6 +33,9 @@ ro.vendor.fingerprint.uses_percentage_samples=true
 ro.hardware.egl=mesa
 ro.hardware.gralloc=minigbm
 ro.hardware.hwcomposer=s6kms
+# Turn the CRTC off with the screen, so the panel driver powers the panel
+# and its supplies down, as stock does.
+vendor.hwc.s6kms.crtc_off=1
 ro.opengles.version=196609
 
 # Keystore
