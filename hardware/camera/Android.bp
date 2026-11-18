@@ -1,0 +1,54 @@
+//
+// Copyright (C) 2026 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_binary {
+    name: "android.hardware.camera.provider-V3-service.universal7420",
+    stem: "android.hardware.camera.provider-V3-service",
+    relative_install_path: "hw",
+    vendor: true,
+    init_rc: ["android.hardware.camera.provider-V3-service.rc"],
+    srcs: [
+        "camera_device.cpp",
+        "camera_metadata_helper.cpp",
+        "camera_provider.cpp",
+        "gralloc_bridge.cpp",
+        "main.cpp",
+        "soft_isp.cpp",
+        "v4l2_pipeline.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "libcamera_metadata",
+        "libcutils",
+        "libfmq",
+        "libjpeg",
+        "liblog",
+        "libutils",
+    ],
+    static_libs: [
+        "android.hardware.camera.common-V1-ndk",
+        "android.hardware.camera.device-V3-ndk",
+        "android.hardware.camera.metadata-V3-ndk",
+        "android.hardware.camera.provider-V3-ndk",
+        "android.hardware.common-V2-ndk",
+        "android.hardware.common.fmq-V1-ndk",
+        "android.hardware.graphics.common-V5-ndk",
+    ],
+    header_libs: [
+        "libhardware_headers",
+    ],
+    cflags: [
+        "-O3",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Wno-unused-parameter",
+        "-Wno-missing-field-initializers",
+        "-Wno-deprecated-copy-with-user-provided-copy",
+    ],
+    cpp_std: "gnu++20",
+}

@@ -77,19 +77,16 @@ TARGET_SCREEN_WIDTH := 1440
 # Mesa panfrost, minigbm and the KMS HWC for the 6.6 kernel
 $(call inherit-product, vendor/nk/gfx/nk_gfx.mk)
 
-# Camera: on 6.6 a libcamera HAL3 module behind the legacy provider
-# (kernel_out/bringup/camera/DESIGN.md), not Samsung's fimc-is HAL.
+# Camera: AIDL V3 V4L2 + SoftISP provider over the mainline 6.6 pipeline
+# (s5c73c2/2p2 rear + s5k4e6 front, ak7375 AF, idg2030 OIS, s2mpb02 flash).
 ifeq ($(NK_HAS_CAMERA),true)
 PRODUCT_PACKAGES += \
-	android.hardware.camera.provider@2.5-service \
-	libion
+	android.hardware.camera.provider-V3-service.universal7420
 
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.xml \
 	frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-	frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
-	frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
-	frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
+	frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml
 endif
 
 # Charger

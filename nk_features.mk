@@ -5,7 +5,7 @@
 # Modem: the 6.6 kernel boots the Shannon 333 CP over SPI and MIPI-LLI;
 # cbd and the RIL start with class main.
 NK_HAS_MODEM ?= true
-NK_HAS_CAMERA ?= false
+NK_HAS_CAMERA ?= true
 NK_HAS_NFC ?= false
 # Sensor hub: the BCM4773's bridge and ssp_sensors modules, and lhd,
 # which loads the hub's RAM patch and runs its firmware.

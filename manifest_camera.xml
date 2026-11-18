@@ -1,11 +1,7 @@
 <manifest version="1.0" type="device">
-    <hal format="hidl">
+    <hal format="aidl">
         <name>android.hardware.camera.provider</name>
-        <transport>hwbinder</transport>
-        <version>2.5</version>
-        <interface>
-            <name>ICameraProvider</name>
-            <instance>legacy/0</instance>
-        </interface>
+        <version>3</version>
+        <fqname>ICameraProvider/internal/0</fqname>
     </hal>
 </manifest>
